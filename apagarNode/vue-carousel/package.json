@@ -1,0 +1,148 @@
+{
+  "_args": [
+    [
+      "vue-carousel",
+      "/home/joaocruz/Projetos/Laravel/roomeo"
+    ]
+  ],
+  "_from": "vue-carousel@latest",
+  "_hasShrinkwrap": false,
+  "_id": "vue-carousel@0.18.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/vue-carousel",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/vue-carousel_0.18.0_1553200177087_0.372654625959844"
+  },
+  "_npmUser": {
+    "email": "quinn@quinnlangille.com",
+    "name": "quinnlangille"
+  },
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "vue-carousel",
+    "raw": "vue-carousel",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/vue-carousel/-/vue-carousel-0.18.0.tgz",
+  "_shasum": "478dfcad3abe2ee44c227020b6e60fb8484dc9f1",
+  "_shrinkwrap": null,
+  "_spec": "vue-carousel",
+  "_where": "/home/joaocruz/Projetos/Laravel/roomeo",
+  "author": {
+    "name": "todd.beauchamp@ssense.com"
+  },
+  "bugs": {
+    "url": "https://github.com/ssense/vue-carousel/issues"
+  },
+  "dependencies": {
+    "global": "^4.3.2",
+    "regenerator-runtime": "^0.12.1",
+    "vue": "^2.5.17"
+  },
+  "description": "A flexible, responsive, touch-friendly carousel for Vue.js",
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@vue/test-utils": "^1.0.0-beta.26",
+    "babel-loader": "^8.0.1",
+    "coveralls": "^3.0.1",
+    "css-loader": "^1.0.0",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.0.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-config-ssense": "^0.1.0",
+    "eslint-config-vue": "^2.0.1",
+    "eslint-plugin-fp": "^2.3.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-vue": "^4.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "husky": "^0.12.0",
+    "isparta": "^4.0.0",
+    "isparta-loader": "^2.0.0",
+    "jest": "^23.5.0",
+    "jest-serializer-vue": "^2.0.2",
+    "lint-staged": "^8.1.0",
+    "prettier": "^1.10.2",
+    "prettier-eslint": "^8.8.1",
+    "prettier-eslint-cli": "^4.7.0",
+    "shelljs": "^0.7.5",
+    "uglifyjs-webpack-plugin": "^1.3.0",
+    "vue-loader": "^15.3.0",
+    "vue-play": "^3.2.1",
+    "vue-play-cli": "^1.1.1",
+    "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "^2.5.17",
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0",
+    "webpack-merge": "^4.1.4"
+  },
+  "directories": {},
+  "dist": {
+    "fileCount": 193,
+    "integrity": "sha512-a2zxh7QJioDxNMguqcuJ7TPbfgK5bGDaAXIia7NWxPAWsEvNE4ZtHgsGu40L5Aha4uyjmNKXvleB14QAXFoKig==",
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJck/QyCRA9TVsSAnZWagAAfUAP/R8yEstl/pRoSM5i4Gfs\nEsd/FLnjo1q8ioa3Ens0ZTw033GuO5Zt6icCkR27NFowyGygIDYQ8I0uGuGM\nR2zYbSdfOjnDHjrZqs88nykQYKUbWJNbPZ5Q93CGuUm+++xRIEog6B2KUrvf\nkJbzfyFpMOGrcW5uoJ8XV8y3rgKededqxOuCpjJD7uqMoB6N9qNezyOEZSd2\nIp4Ryk917mth6rspUGtE0OKj9J9EJe6mnrjYqFu3oI9WQOJoZK+9wUD/0BYq\nMwAvv/T6WpiFL6wGc3uaExkCGkwcvb2J2H0zE6UhE4WTklZzDIVRaA62Bf+H\nWBcL8nVSaujX7xHPDPsMqK+DAD9olEWZApQNRnfl40hAclgkWxrnOc7puRZH\nvX/hSIgSC1ZX7g9pMDDeb60H7Iuut3u7H4fpsWsbuvSgIAS+le4tChjzRiG9\nJ7+fntsZ2GOeEH30RAzY2t48xbmp9Ga2HKT1rMYbhAZh+5gbm6hvT9+/Dw57\nfPsxFnvdM7w+35hro6ZEBElEMbylLdDyfJY5HCWoFyadJrecwwnQaPMLdCad\nB2YhUjRGnRjcbAMzfU7uNO5imXXx/Ev3e714jbkcpbuClkoMwzYPgRbVDB2+\nt5RzceyaFiQcnab5Q4WbfPxiyWxtWHqYV40MW2IPK3NSd4Uiuew47DQWsfMi\nfvcH\r\n=Ljps\r\n-----END PGP SIGNATURE-----\r\n",
+    "shasum": "478dfcad3abe2ee44c227020b6e60fb8484dc9f1",
+    "tarball": "https://registry.npmjs.org/vue-carousel/-/vue-carousel-0.18.0.tgz",
+    "unpackedSize": 1783367
+  },
+  "homepage": "https://github.com/ssense/vue-carousel#readme",
+  "keywords": [
+    "Vue",
+    "carousel",
+    "responsive",
+    "slider"
+  ],
+  "license": "MIT",
+  "licenseText": "MIT License\n\nCopyright (c) 2016 - SSENSE\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.",
+  "main": "dist/vue-carousel.min.js",
+  "maintainers": [
+    {
+      "name": "drxwskx",
+      "email": "andrewperkslabbe@gmail.com"
+    },
+    {
+      "name": "quinnlangille",
+      "email": "quinn@quinnlangille.com"
+    },
+    {
+      "name": "ssense-admin",
+      "email": "adminlogin@ssense.com"
+    },
+    {
+      "name": "toddlawton",
+      "email": "toddbee@gmail.com"
+    }
+  ],
+  "name": "vue-carousel",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/SSENSE/vue-carousel.git"
+  },
+  "scripts": {
+    "build": "webpack --config webpack.prod.js && npm run updateDocAssets",
+    "coveralls": "cat coverage/client/lcov.info | ./node_modules/.bin/coveralls",
+    "dev": "vue-play start --standalone",
+    "dev:build": "vue-play build",
+    "docs:build": "npm run build && rm -rf ./docs/public && mkdir ./docs/public/ && cd ./docs/public/ && git init && git remote add origin git@github.com:SSENSE/vue-carousel.git && git fetch && git checkout -f gh-pages && cd .. && npm install && ./node_modules/.bin/hexo clean && ./node_modules/.bin/hexo generate",
+    "lint": "prettier-eslint --write \"src/**/?(*.js|*.vue)\" || exit 1",
+    "precommit": "lint-staged && npm run test",
+    "test": "npm run test:client",
+    "test-coverage": "npm run test:client:coverage",
+    "test:client": "jest --config tests/client.jest.json",
+    "test:client:coverage": "jest --config tests/client.jest.json --coverage",
+    "updateDocAssets": "cp ./dist/vue-carousel.min.js ./docs/themes/vue/source/js/"
+  },
+  "version": "0.18.0"
+}
