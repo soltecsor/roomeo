@@ -17,9 +17,9 @@
 
 					<div class="col-lg-6 col-md-8 col-sm-12">
 						<div class="about-image mt-70">
-							<img src="http://roomeouk.com/roomeo/public/portal/assets/images/about/{{ $institutional->inst_title_img }}" alt="image_not_found">
+							<img src="{{ asset('public/portal/assets/images/about').'/'.$institutional->inst_title_img }}" alt="roomeo home sharing">
 							<span class="decoration-image">
-								<img src="http://roomeouk.com/roomeo/public/portal/assets/images/about/{{ $institutional->inst_title_img }}" alt="image_not_found">
+								<img src="{{ asset('public/portal/assets/images/about').'/'.$institutional->inst_title_img }}"  alt="roomeo home sharing">
 							</span>
 						</div>
 					</div>
@@ -112,8 +112,7 @@
 					<div class="col-lg-6 col-md-6 col-sm-12">
 						<div class="team-member-item">
 							<div class="image-container">
-								<img src="http://roomeouk.com/roomeo/public/portal/assets/images/team/{{ $team->team_member_one_img }}" alt="Thiago Muffo">
-								<!--<a href="#!" class="plus-effect"></a>-->
+								<img src="{{ asset('public/portal/assets/images/team').'/'.$team->team_member_one_img }}" alt="Thiago Muffo">
 							</div>
 							<div class="member-info">
 								<h3 class="member-name">{{ $team->team_member_one_name }}</h3>

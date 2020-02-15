@@ -61,7 +61,7 @@
                                     </div>
                                 </div> 
                                  <div class="col-lg-6">
-                                   <img style="display: block;margin-left: auto;margin-right: auto;" src="http://roomeouk.com/roomeo/public/portal/assets/images/about/{{ $institutional->inst_title_img }}" width="50%" />
+                                   <img style="display: block;margin-left: auto;margin-right: auto;" src="{{ asset('public/portal/assets/images/about').'/'.$institutional->inst_title_img }}" width="50%" />
                                 </div>
                                 <div class="col-lg-12 m-t-30">
                                     <button type="submit" class="btn btn-primary waves-effect text-left"> Update Data</button>
@@ -136,7 +136,7 @@
                                     </div>
                                 </div> 
                                  <div class="col-lg-6">
-                                   <img style="display: block;margin-left: auto;margin-right: auto;" src="http://roomeouk.com/roomeo/public/portal/assets/images/team/{{ $team->team_member_one_img }}" width="40%" />
+                                   <img style="display: block;margin-left: auto;margin-right: auto;" src="{{ asset('public/portal/assets/images/team').'/'.$team->team_member_one_img }}" width="40%" />
                                 </div>
                                  <div class="col-lg-6 m-t-40">
                                     <div class="form-group">
@@ -171,7 +171,7 @@
                                     </div>
                                 </div> 
                                  <div class="col-lg-6">
-                                   <img style="display: block;margin-left: auto;margin-right: auto;" src="http://roomeouk.com/roomeo/public/portal/assets/images/team/{{ $team->team_member_two_img }}" width="40%" />
+                                   <img style="display: block;margin-left: auto;margin-right: auto;" src="{{ asset('public/portal/assets/images/team').'/'.$team->team_member_two_img }}" width="40%" />
                                 </div>
                                 <div class="col-lg-12 m-t-30">
                                     <button type="submit" class="btn btn-primary waves-effect text-left"> Update Data</button>

@@ -41,7 +41,7 @@
                                           <button data-toggle="modal" data-target="#bs-example-{{ $price->id }}" class="btn btn-warning waves-effect"><i class="fa fa-pencil"></i></button>
 												<form action="{!! url('/delete_price/{{ $price->id }}') !!}" method="POST" style="display: inline;" onsubmit="if(confirm('Deletar? A confirmação apagará PERMANENTEMENTE!')) { return true } else {return false };">
 													<input type="hidden" name="_method" value="DELETE">
-													<input type="hidden" name="id_usuario" value="{{ $price->id }}">
+													<input type="hidden" name="id_price" value="{{ $price->id }}">
 													<input type="hidden" name="_token" value="{{ csrf_token() }}">
 													<button type="submit" class="btn btn-danger waves-effect"><i class="fa fa-close"></i></button>
 												</form>

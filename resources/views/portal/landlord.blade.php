@@ -11,10 +11,7 @@
 
 					<div class="col-lg-6 col-md-6 col-sm-12">
 						<div class="about-image mt-70">
-							<img src="http://roomeouk.com/roomeo/public/portal/assets/images/about/novo_eps.jpg" alt="image_not_found">
-							<span class="decoration-image">
-								<img src="http://roomeouk.com/roomeo/public/portal/assets/images/about/novo_eps.jpg" alt="image_not_found">
-							</span>
+							<img src="{{asset('/public/portal/assets/images/about').'/novo_eps.jpg'}}" alt="roomeo home sharing">
 						</div>
 					</div>
 
@@ -80,58 +77,35 @@
 
 		<!-- feature-section - start
 		================================================== -->
-		<section id="prices" class="feature-section prices sec-ptb-120 bg-light-gray clearfix" style="background-image: url(portal/assets/images/background/bg_green.jpg);">
+		<section id="prices" class="feature-section prices sec-ptb-120 bg-light-gray clearfix" style="background-image: url(public/portal/assets/images/background/bg_green.jpg);">
 			<div class="container">
-
-				<div class="section-title text-center mb-30">
+				<div class="section-title text-center mb-30 texto-destaque">
 					<span class="small-title">Our Plans</span>
 					<h2 class="big-title mb-0">We have the right package for your needs and a selection of add-ons that will make your life much easier. Pick yours and start enjoying the benefits today!</h2>
 				</div>
-
 				<div class="row">
+				@foreach ($prices as $price)
 					<div class="col-lg-6 col-md-6 col-sm-12">
 						<div class="feature-grid-item text-center" id="accordionLite">
 
-							<h3 class="feature-title">Tenant Finder Lite</h3>
+							<h3 class="feature-title">{{$price->prices_title}}</h3>
 
 							<span class="price text-center">
-								<h2><small>£</small>99</h2>
+								<h2><small>£</small>{{$price->prices_value}}</h2>
 							</span>
 
 							<p>
-								Ideal for those who want to bypass the tenant finding process and meet the best applicants for viewings.
+								{{$price->prices_description}}
 							</p>
 
 							<div class="item-label ul-li-right">
 								<ul class="clearfix">
-									<li class="bg-default-lightblue"><a href="#!">Introductory offer</a></li>
+									<li class="bg-default-lightblue"><a href="#!">{{$price->prices_button}}</a></li>
 								</ul>
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-6 col-md-6 col-sm-12">
-						<div class="feature-grid-item text-center" id="accordionPlus">
-
-							<h3 class="feature-title">Tenant Finder Plus</h3>
-
-							<span class="price text-center">
-								<h2><small>£</small>199</h2>
-							</span>
-
-							<p>
-								A total hands-off solution, you will only have to welcome your new tenant when they move in (although we can do that too!)
-							</p>
-
-							<div class="item-label ul-li-right">
-								<ul class="clearfix">
-									<li class="bg-default-lightblue"><a href="#!">Introductory offer</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-
-				</div>
-			</div>
+				@endforeach	
 		</section>
 		<!-- feature-section - end
 		================================================== -->
@@ -319,59 +293,22 @@
 				</div>
 
 				<div class="row meio">
+				@foreach ($processes as $process)
 					<div class="col-lg-3 col-md-4 col-sm-6">
 						<div class="service-grid-item-1">
 							<span class="service-icon">
-								<img src="http://roomeouk.com/roomeo/public/portal/assets/images/ico/step_01.svg" alt="Choose your plan">
+								<img src="{{asset('public/portal/assets/images/ico').'/'.$process->process_img}}" alt="roomeo home sharing">
 							</span>
-							<h2 class="service-title">Choose your plan</h2>
+							<h2 class="service-title">{{$process->process_title}}</h2>
 							<p>
-								Lorem ipsum dolor sit amet, consect etur adipisicing elit, sed do eiusmod tempor incididunt ut labore. 
+							{{$process->process_description}}
 							</p>
-							<!--<a href="#!" class="details-btn">read more</a>-->
 						</div>
 					</div> 
-
-					<div class="col-lg-3 col-md-4 col-sm-6">
-						<div class="service-grid-item-1">
-							<span class="service-icon">
-								<img src="http://roomeouk.com/roomeo/public/portal/assets/images/ico/step_02.svg" alt="We'll contact you">
-							</span> 
-							<h2 class="service-title">We'll contact you</h2>
-							<p>
-								Lorem ipsum dolor sit amet, consect etur adipisicing elit, sed do eiusmod tempor incididunt ut labore. 
-							</p>
-						</div>
-					</div>
-
-					<div class="col-lg-3 col-md-4 col-sm-6">
-						<div class="service-grid-item-1">
-							<span class="service-icon">
-								<img src="http://roomeouk.com/roomeo/public/portal/assets/images/ico/step_03.svg" alt="We'll book a visit">
-							</span>
-							<h2 class="service-title">We'll book a visit</h2>
-							<p>
-								Lorem ipsum dolor sit amet, consect etur adipisicing elit, sed do eiusmod tempor incididunt ut labore. 
-							</p>
-						</div>
-					</div>	
-
-					<div class="col-lg-3 col-md-4 col-sm-6">
-						<div class="service-grid-item-1">
-							<span class="service-icon">
-								<img src="http://roomeouk.com/roomeo/public/portal/assets/images/ico/step_04.svg" alt="Welcome your ideal tenant">
-							</span>
-							<h2 class="service-title">Welcome your ideal tenant</h2>
-							<p>
-								Lorem ipsum dolor sit amet, consect etur adipisicing elit, sed do eiusmod tempor incididunt ut labore. 
-							</p>
-						</div>
-					</div>		
+				@endforeach
+					
 
 				</div>
-
-				<!--<a class="custom-btn btn-meio ancora mt-5" href="#prices"><i class="fas fa-check"></i> I agree</a>-->
-
 			</div>
 		</section>	
 @endsection

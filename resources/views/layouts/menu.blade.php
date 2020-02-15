@@ -27,8 +27,8 @@
                     <a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Landlord Section</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{!! url('/reasons') !!}">Reasons</a></li>
-                        <li><a href="{!! url('/prices') !!}">Prices</a></li>
-                        <li><a href="{!! url('/processes') !!}">Processes</a></li>
+                        <li><a href="{!! url('/prices') !!}">Plans</a></li>
+                        <li><a href="{!! url('/processes') !!}">Steps</a></li>
                     </ul>
                 </li>
                 @endcan

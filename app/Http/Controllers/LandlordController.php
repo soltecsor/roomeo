@@ -7,16 +7,18 @@ use App\Addons;
 use App\Price;
 use App\Process;
 use App\Reason;
+use Intervention\Image\Facades\Image;
+
 
 class LandlordController extends Controller
 {    
     public function index(){
         $reasons = Reason::all();
         $prices = Price::all();
-        $process = Process::all();
+        $processes = Process::all();
         $addons = Addons::all();
 
-        return view('portal.landlord', compact('reasons', 'prices', 'process', 'addons'));
+        return view('portal.landlord', compact('reasons', 'prices', 'processes', 'addons'));
     }
     public function reasons(){
         $reasons = Reason::all();
@@ -54,15 +56,15 @@ class LandlordController extends Controller
         }
     }
 
-    public function reasons_destroy($id)
+    public function reasons_destroy(Request $request)
     {
-        $reason = Reason::findOrFail($id);
+        $reason = Reason::findOrFail($request->id_reason);
         if ($reason->delete()) {
             flash('Reason delete successfully')->success();
-            return redirect(url('/feedbacks'));
+            return redirect(url('/reasons'));
         } else {
             flash('Error delete Reason')->error();
-            return redirect(url('/feedbacks'));
+            return redirect(url('/reasons'));
         }
     }
 
@@ -83,10 +85,10 @@ class LandlordController extends Controller
         $price->prices_button = ($request->input("prices_button"));
 
         if ($price->save()) {
-            flash('Price updated successfully')->success();
+            flash('Planning updated successfully')->success();
             return redirect(url('/prices'));
         } else {
-            flash('Error updating Price')->error();
+            flash('Error updating Planning')->error();
             return redirect(url('/prices'));
         }
     }
@@ -98,28 +100,28 @@ class LandlordController extends Controller
         $price->prices_button = ($request->input("prices_button"));
 
         if ($price->save()) {
-            flash('Price updated successfully')->success();
+            flash('Planning updated successfully')->success();
             return redirect(url('/prices'));
         } else {
-            flash('Error updating Price')->error();
+            flash('Error updating Planning')->error();
             return redirect(url('/prices'));
         }
     }
 
-    public function prices_destroy($id)
-    {
+    public function prices_destroy(Request $request)
+    {   $id = $request->id_price;
         $price = Price::findOrFail($id);
         if ($price->delete()) {
-            flash('Price delete successfully')->success();
+            flash('Planning delete successfully')->success();
             return redirect(url('/prices'));
         } else {
-            flash('Error delete Price')->error();
+            flash('Error delete Planning')->error();
             return redirect(url('/prices'));
         }
     }
 
     public function processes(){
-        $processes = Price::all();
+        $processes = Process::all();
 
         return view('edit.process', compact('processes'));
     }
@@ -140,14 +142,15 @@ class LandlordController extends Controller
         }
 
         if ($process->save()) {
-            flash('Process updated successfully')->success();
+            flash('Step updated successfully')->success();
             return redirect(url('/processes'));
         } else {
-            flash('Error updating Process')->error();
+            flash('Error updating Step')->error();
             return redirect(url('/processes'));
         }
     }
     public function created_process(Request $request){
+        
         $process = new Process;
         $process->process_title = ($request->input("process_title"));
         $process->process_description = ($request->input("process_description"));
@@ -160,22 +163,22 @@ class LandlordController extends Controller
         }
 
         if ($process->save()) {
-            flash('Process updated successfully')->success();
+            flash('Step updated successfully')->success();
             return redirect(url('/processes'));
         } else {
-            flash('Error updating Process')->error();
+            flash('Error updating Step')->error();
             return redirect(url('/processes'));
         }
     }
 
-    public function process_destroy($id)
+    public function process_destroy(Request $request)
     {
-        $process = Process::findOrFail($id);
+        $process = Process::findOrFail($request->id_process);
         if ($process->delete()) {
-            flash('Process delete successfully')->success();
+            flash('Step delete successfully')->success();
             return redirect(url('/processes'));
         } else {
-            flash('Error delete Process')->error();
+            flash('Error delete Step')->error();
             return redirect(url('/processes'));
         }
     }
