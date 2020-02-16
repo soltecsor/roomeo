@@ -154,6 +154,17 @@ class PortalController extends Controller
             return redirect(url('/feedbacks'));
         }
     }
+    public function delete_feedback(Request $request)
+    {
+        $feedback = Feedback::findOrFail($request->id_feedback);
+        if ($feedback->delete()) {
+            flash('Review delete successfully')->success();
+            return redirect(url('/feedbacks'));
+        } else {
+            flash('Error delete Review')->error();
+            return redirect(url('/feedbacks'));
+        }
+    }
     public function index_terms(){
         $terms = Terms::all();
 

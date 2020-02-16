@@ -59,9 +59,9 @@
                                         <td>{{ $feedback->feedbacks_client_function }}</td>
                                         <td>
                                           <button data-toggle="modal" data-target="#bs-example-{{ $feedback->id }}" class="btn btn-warning waves-effect"><i class="fa fa-pencil"></i></button>
-												<form action="{!! url('/apagar_usuario') !!}" method="POST" style="display: inline;" onsubmit="if(confirm('Deletar? A confirmação apagará PERMANENTEMENTE!')) { return true } else {return false };">
-													<input type="hidden" name="_method" value="DELETE">
-													<input type="hidden" name="id_usuario" value="{{ $feedback->id }}">
+												<form action="{!! url('/delete_feedback') !!}" method="post" style="display: inline;" onsubmit="if(confirm('Deletar? A confirmação apagará PERMANENTEMENTE!')) { return true } else {return false };">
+													<input type="hidden" name="_method" value="post">
+													<input type="hidden" name="id_feedback" value="{{ $feedback->id }}">
 													<input type="hidden" name="_token" value="{{ csrf_token() }}">
 													<button type="submit" class="btn btn-danger waves-effect"><i class="fa fa-close"></i></button>
 												</form>
@@ -153,7 +153,6 @@
                 </div>
             </div>
         </div>
-
         {{-- Modal Edit--}}
             <div class="modal fade bs-example-modal-lg" id="newFeedback" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" style="display: none;" aria-hidden="true">
                 <div class="modal-dialog modal-lg">

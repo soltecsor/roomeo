@@ -12,6 +12,9 @@
 					<div class="col-lg-6 col-md-6 col-sm-12">
 						<div class="about-image mt-70">
 							<img src="{{asset('/public/portal/assets/images/about').'/novo_eps.jpg'}}" alt="roomeo home sharing">
+							<span class="decoration-image">
+								<img src="{{asset('/public/portal/assets/images/about').'/novo_eps.jpg'}}" alt="roomeo home sharing">
+							</span>
 						</div>
 					</div>
 
@@ -310,5 +313,6 @@
 
 				</div>
 			</div>
-		</section>	
+		</section>
+		@include('portal.view.partners')	
 @endsection

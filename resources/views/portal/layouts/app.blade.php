@@ -187,7 +187,7 @@
     <script src="public/portal/assets/js/plugins.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js.map"></script>
     <script src="public/portal/assets/js/scripts.js"></script>
-    <script src="{{asset('public/js/app.js')}}"></script>
+    <!-- <script src="{{asset('public/js/app.js')}}"></script> -->
 
     {{-- require_once('inc/svg.php') --}}
     @include('portal.inc.svg')

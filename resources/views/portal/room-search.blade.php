@@ -21,6 +21,7 @@
 
 			</div>
 		</section>
+		@include('portal.view.partners')
 
 
 		<!-- property-section - start

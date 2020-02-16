@@ -142,4 +142,5 @@
 			</div>
 		</section>
 		@endforeach
+		@include('portal.view.partners')
 @endsection

@@ -62,13 +62,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('edit_price', 'LandlordController@edit_price');
     Route::post('created_price', 'LandlordController@created_price');
     Route::delete('delete_price/{id}', 'LandlordController@prices_destroy');
-
+    Route::post('delete_feedback', 'PortalController@delete_feedback');
     Route::get('processes', 'LandlordController@processes');
     Route::post('edit_process', 'LandlordController@edit_process');
     Route::post('created_process', 'LandlordController@created_process');
     Route::delete('delete_process/{id}', 'LandlordController@process_destroy');
     Route::post('edit_profile', 'UserController@edit_profile');
-    Route::post('logoff', 'UserController@logoff');
+    Route::post('/logoff', 'UserController@logoff');
+    Route::post('{any}/logoff', 'UserController@logoff');
 
 });
 

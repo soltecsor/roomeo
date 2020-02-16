@@ -142,6 +142,7 @@
 			@endforeach
 			
 		</section>
+		@include('portal.view.partners')
 		<!-- team-section - end
 		================================================== -->
 

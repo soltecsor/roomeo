@@ -7,6 +7,7 @@
 			@include('portal.view.rooms')
 			@include('portal.view.about')
 			@include('portal.view.feedbacks')
+			@include('portal.view.partners')
 			{{-- @include('portal.view.news') --}}
 		</div>
 	@endsection

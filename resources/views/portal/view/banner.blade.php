@@ -1,7 +1,7 @@
 <!-- banner -->
 @foreach($banners as $banner)
 <section id="banner-section" class="banner-section clearfix">
-	<div class="parallax-window" data-parallax="scroll" data-image-src="http://roomeo.co.uk/roomeo/public/portal/uploads/slider/slide01.jpg">
+	<div class="parallax-window" data-parallax="scroll" data-image-src="{{ asset('public/portal/uploads/slider').'/slide01.jpg' }}">
 		<div class="overlay-blue clearfix">
 			<div class="container">
 				<div class="row justify-content-lg-start justify-content-md-center">
@@ -25,14 +25,14 @@
 										<li>
 											<div class="form-item type-select-form mb-0">						
 												<select id="type-select">
-													<option data-display="Buget Range"></option>
+													<option data-display="Budget Range"></option>
 												</select>
 												<label for="type-select" class="form-item-btn"><i class="fas fa-pound-sign"></i></label>
 												<a class="toggle-sm"><i class="fas fa-times"></i></a>
 											</div>
 											<div class="bloco-busca">
 												<div class="rangeslider">
-													<h5>Enter price range below</h5>	
+													<h5>Enter budget range below</h5>	
 												    <input class="min" name="range_1" type="range" min="1" max="100" value="10" />
 												    <input class="max" name="range_1" type="range" min="1" max="100" value="90" />
 												    <span class="range_min light left">£ 10.000</span>
@@ -50,17 +50,17 @@
 											</div>
 											<div class="bloco-busca">
 												<div class="rangedate">
-													<h5>Escolha o melhor período</h5>
+													<h5>Choice the better period</h5>
 													<span>
 														<label for="from">
 															From 
 															<input id="from" name="from" class="datetimepicker" type="text" >
-															<img src="http://roomeouk.com/roomeo/public/portal/assets/images/ico/calendar.png" alt="calendar" class="calendar" />
+															<img src="{{ asset('public/portal/assets/images/ico').'/calendar.png'}}" alt="roomeo home sharing" class="calendar" />
 														</label>														
 														<label for="to">
 															To 
 															<input id="to" name="to" class="datetimepicker" type="text" >
-															<img src="http://roomeouk.com/roomeo/public/portal/assets/images/ico/calendar.png" alt="calendar" class="calendar" />
+															<img src="{{ asset('public/portal/assets/images/ico').'/calendar.png'}}" alt="roomeo home sharing" class="calendar" />
 														</label>
 													</span>
 												</div>

@@ -29,7 +29,7 @@
                             <li><a href="{!! url('/profile') !!}"><i class="ti-user"></i> My Profile</a></li>
                             <li>
                                 <a  onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                                     document.getElementById('logout-form').submit();" style="cursor:pointer">
                                     <i class="fa fa-power-off"></i> Logout</a>
                                 </a>
 
