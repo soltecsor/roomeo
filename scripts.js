@@ -10,7 +10,6 @@
 
 (function($) {
   "use strict";
-
   $('.owl-parceiros').owlCarousel({
     loop:true,
     margin:30,

@@ -95,3 +95,5 @@ Route::get('/landlord', 'LandlordController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::post('/send', 'MailController@send');

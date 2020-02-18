@@ -12,40 +12,41 @@
 					<p>{!! $contact->subtitle !!}</p>
 					</div>
 
-					<form action="#">
+					<form method="POST" action="{{ url('/send') }}">
+					<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 						<div class="row">
 
 							<div class="col-lg-6 col-md-6 col-sm-12">
 								<div class="form-item">
-									<input id="name-input" type="text" placeholder="Name">
+									<input name="nameMail" type="text" placeholder="Name">
 									<label for="name-input" class="form-item-btn"><i class="far fa-user"></i></label>
 								</div>
 							</div>							
 
 							<div class="col-lg-6 col-md-6 col-sm-12">
 								<div class="form-item">
-									<input id="surname-input" type="text" placeholder="Surname">
+									<input name="surnameMail" type="text" placeholder="Surname">
 									<label for="surname-input" class="form-item-btn"><i class="far fa-user"></i></label>
 								</div>
 							</div>
 
 							<div class="col-lg-6 col-md-6 col-sm-12">
 								<div class="form-item">
-									<input id="email-input" type="text" placeholder="Enter Your Email Address">
+									<input name="emailMail" type="text" placeholder="Enter Your Email Address">
 									<label for="email-input" class="form-item-btn"><i class="far fa-envelope"></i></label>
 								</div>
 							</div>
 
 							<div class="col-lg-6 col-md-6 col-sm-12">
 								<div class="form-item">
-									<input id="phone-input" type="text" placeholder="Enter Your Phone Number">
+									<input name="phoneMail" type="text" placeholder="Enter Your Phone Number">
 									<label for="phone-input" class="form-item-btn"><i class="far fa-phone"></i></label>
 								</div>
 							</div>
 
 							<div class="col-lg-6 col-md-6 col-sm-12">
 								<div class="form-item">
-									<select class="form-control" id="iam">
+									<select class="form-control" id="iam" name="iamMail">
 		                                <option selected="selected" value="0">I am...</option>
 		                                <option value="A landlord looking to let my property">A landlord looking to let my property</option>
 		                                <option value="A tenant looking to rent a room">A tenant looking to rent a room</option>
@@ -58,7 +59,7 @@
 
 							<div class="col-lg-6 col-md-6 col-sm-12">
 								<div class="form-item">
-		                          <select class="form-control" id="howdid">
+		                          <select class="form-control" id="howdid" name="howdidMail">
 		                           <option selected="selected" value="0">How did you hear about us?</option>
 		                           <option value="Google search">Google search</option>
 		                           <option value="Facebook">Facebook</option>
@@ -78,7 +79,7 @@
 							</div>
 							<div class="col-lg-12 col-md-12 col-sm-12">
 								<div class="form-textarea">
-									<textarea id="message-textarea" placeholder="Please type your message here"></textarea>
+									<textarea id="message-textarea" placeholder="Please type your message here" name="messageMail"></textarea>
 									<label for="subject-input" class="form-item-btn"><i class="far fa-comments"></i></label>
 								</div>
 							
@@ -101,7 +102,7 @@
 				<div class="section-title text-center mb-70">
 					<div class="brand-logo">
 						<a href="index.php" class="brand-link text-center">
-							<img src="http://roomeouk.com/roomeo/public/portal/assets/images/logo.png" alt="Welcome to Roomeo Home Sharing!" width="250">
+							<img src="{{ asset('public/portal/assets/images').'/logo.png'}}" alt="Welcome to Roomeo Home Sharing!" width="250">
 						</a>
 					</div>
 				</div>
