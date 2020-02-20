@@ -137,13 +137,13 @@
                             <div class="col-lg-3 col-md-4 col-sm-12">
                                 <div class="useful-links ul-li-block clearfix">
                                     <ul class="clearfix">
-                                        <li><a href="index.php">Home</a></li>
-                                        <li><a href="room-search.php">Room Search</a></li>
-                                        <li><a href="landlord.php">Landlords</a></li>
-                                        <li><a href="blog.php">News</a></li>
-                                        <li><a href="about.php">About</a></li>
-                                        <li><a href="terms.php">Terms and Conditions</a></li>
-                                        <li><a href="contact.php">Contact</a></li>
+                                        <li><a href="{{ url('/') }}">Home</a></li>
+                                        <li><a href="{{ url('/room-search') }}">Room Search</a></li>
+                                        <li><a href="{{ url('/landlord') }}">Landlords</a></li>
+                                        <!-- <li><a href="{{ url('/blog') }}">News</a></li> -->
+                                        <li><a href="{{ url('/about') }}">About</a></li>
+                                        <li><a href="{{ url('/terms') }}">Terms and Conditions</a></li>
+                                        <li><a href="{{ url('/contact') }}">Contact</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -153,9 +153,9 @@
                                 <div class="footer-newsletter clearfix">
                                     <div class="social-media ul-li clearfix">
                                         <ul class="clearfix">
-                                            <li><a href="#!"><i class="fab fa-facebook-f"></i> Facebook</a></li>
-                                            <li><a href="#!"><i class="fab fa-instagram"></i> Instagram</a></li>
-                                            <li><a href="#!"><i class="fab fa-youtube"></i> Youtube</a></li>
+                                            <li><a href="https://www.facebook.com/roomeouk/"><i class="fab fa-facebook-f" target="_blank"></i> Facebook</a></li>
+                                            <li><a href="https://www.instagram.com/roomeouk/"><i class="fab fa-instagram" target="_blank"></i> Instagram</a></li>
+                                            <!-- <li><a href="#!"><i class="fab fa-youtube"></i> Youtube</a></li> -->
                                         </ul>
                                     </div>
                                 </div>
@@ -187,7 +187,7 @@
     <script src="public/portal/assets/js/plugins.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js.map"></script>
     <script src="public/portal/assets/js/scripts.js"></script>
-    <script src="api.js"></script>
+    <script src="{{asset('public/js').'/emailValidate.js'}}"></script>
     <!-- <script src="{{asset('public/js/app.js')}}"></script> -->
 
     {{-- require_once('inc/svg.php') --}}

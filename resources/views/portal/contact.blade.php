@@ -6,40 +6,39 @@
 
 			<div class="contact-form clearfix">
 				<div class="container">
-
 					<div class="section-title text-center mb-70">
 					<h2 class="big-title">{{ $contact->title }}</h2>
 					<p>{!! $contact->subtitle !!}</p>
 					</div>
 
-					<form method="POST" action="{{ url('/send') }}">
+					<form method="POST" action="{{ url('/send') }}" id="formSend">
 					<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 						<div class="row">
 
 							<div class="col-lg-6 col-md-6 col-sm-12">
 								<div class="form-item">
-									<input name="nameMail" type="text" placeholder="Name">
+									<input name="nameMail" type="text" placeholder="Name" id ="name">
 									<label for="name-input" class="form-item-btn"><i class="far fa-user"></i></label>
 								</div>
 							</div>							
 
 							<div class="col-lg-6 col-md-6 col-sm-12">
 								<div class="form-item">
-									<input name="surnameMail" type="text" placeholder="Surname">
+									<input name="surnameMail" type="text" placeholder="Surname" id="surname">
 									<label for="surname-input" class="form-item-btn"><i class="far fa-user"></i></label>
 								</div>
 							</div>
 
 							<div class="col-lg-6 col-md-6 col-sm-12">
 								<div class="form-item">
-									<input name="emailMail" type="text" placeholder="Enter Your Email Address">
+									<input name="emailMail" type="text" placeholder="Enter Your Email Address" id = "email">
 									<label for="email-input" class="form-item-btn"><i class="far fa-envelope"></i></label>
 								</div>
 							</div>
 
 							<div class="col-lg-6 col-md-6 col-sm-12">
 								<div class="form-item">
-									<input name="phoneMail" type="text" placeholder="Enter Your Phone Number">
+									<input name="phoneMail" type="text" placeholder="Enter Your Phone Number" id = "phone">
 									<label for="phone-input" class="form-item-btn"><i class="far fa-phone"></i></label>
 								</div>
 							</div>
@@ -81,13 +80,18 @@
 								<div class="form-textarea">
 									<textarea id="message-textarea" placeholder="Please type your message here" name="messageMail"></textarea>
 									<label for="subject-input" class="form-item-btn"><i class="far fa-comments"></i></label>
-								</div>
-							
-								<div class="submit-btn-area text-center">
-									<button type="submit" class="custom-btn">{{ $contact->button_label }}</button>
-								</div>
-							</div>
+									@if(session('emailsent'))
+									<div id="sentSuccessful" style="background:#05b59d;margin:15px;height:25px;font-size:14px;border-radius:6px;">
+										<span style="margin:37%;color:#FFF">{{ session('emailsent') }}</span>
+									</div>
+									@endif
+									<span class="badge badge-danger" id="blankField" style="display:none;margin:15px;height:25px;font-size:14px;border-radius:6px;">There are required fields yet</span>
 
+								</div>								
+								<div class="submit-btn-area text-center">
+									<button type="submit" class="custom-btn" id="sendEmail">{{ $contact->button_label }}</button>
+								</div>
+							</div> 
 						</div>
 					</form>
 

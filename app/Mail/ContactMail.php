@@ -33,6 +33,7 @@ class ContactMail extends Mailable
     {   
         return $this->from('roomeouk@gmail.com')
                     ->view('mails.contact');
+                    //->with('emailsent', 'E-Mail sent successful')
                     // ->with(
                     //   [
                     //         'testVarOne' => '1',

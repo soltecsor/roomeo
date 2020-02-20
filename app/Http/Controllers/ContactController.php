@@ -10,7 +10,7 @@ class ContactController extends Controller
     public function index(){
         $contacts = Contact::all();
 
-        return view('portal.contact', compact('contacts'));
+        return view('portal.contact', compact('contacts'))->with('emailsent', '');
     }
     public function contacts_edit($id){
         $contact = Contact::find($id);
