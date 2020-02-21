@@ -5,6 +5,7 @@
 			@include('portal.view.banner')
 			@include('portal.view.services')
 			@include('portal.view.rooms')
+			@include('portal.view.properties') 
 			@include('portal.view.about')
 			@include('portal.view.feedbacks')
 			@include('portal.view.partners')

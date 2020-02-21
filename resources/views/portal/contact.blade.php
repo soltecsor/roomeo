@@ -31,7 +31,7 @@
 
 							<div class="col-lg-6 col-md-6 col-sm-12">
 								<div class="form-item">
-									<input name="emailMail" type="text" placeholder="Enter Your Email Address" id = "email">
+									<input name="emailMail" type="email" placeholder="Enter Your Email Address" id = "email">
 									<label for="email-input" class="form-item-btn"><i class="far fa-envelope"></i></label>
 								</div>
 							</div>

@@ -4,7 +4,7 @@
         <div class="navbar-header">
             <a class="navbar-brand">
                 <span>
-                    <img src="http://roomeouk.com/roomeo/public/images/logoH.png" alt="homepage" width="100px" height="100%"/>
+                    <img src="{{ asset('public/images/logoH.png')}}" alt="homepage" width="100px" height="100%"/>
                 </span>
             </a>
         </div>

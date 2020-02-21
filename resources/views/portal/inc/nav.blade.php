@@ -66,23 +66,23 @@
 				</li> -->
 
 				<li class="">
-					<a href="index.php"><span data-hover="Home">Home</span></a>
+					<a href="{{ url('/') }}"><span data-hover="Home">Home</span></a>
 				</li>
 
 				<li class="">
-					<a href="room-search.php"><span data-hover="Room Search">Room Search</span></a>
+					<a href="{{ url('/room-search') }}"><span data-hover="Room Search">Room Search</span></a>
 				</li>
 
-				<li class="">
+				<!-- <li class="">
 					<a href="blog.php"><span data-hover="News">News</span></a>
+				</li> -->
+
+				<li class="">
+					<a href="{{ url('/about') }}"><span data-hover="About">About</span></a>
 				</li>
 
 				<li class="">
-					<a href="about.php"><span data-hover="About">About</span></a>
-				</li>
-
-				<li class="">
-					<a href="contact.php"><span data-hover="Contact">Contact</span></a>
+					<a href="{{ url('/contact') }}"><span data-hover="Contact">Contact</span></a>
 				</li>
 			</ul>
 		</div>
@@ -104,9 +104,9 @@
 
 		<div class="social-links mb-60 ul-li clearfix">
 			<ul class="text-uppercase clearfix">
-				<li><a href="#!"><i class="fab fa-facebook-f"></i></a></li>
-				<li><a href="#!"><i class="fab fa-instagram"></i></a></li>
-				<li><a href="#!"><i class="fab fa-youtube"></i></a></li>
+				<li><a href="https://www.facebook.com/roomeo.london/"><i class="fab fa-facebook-f"></i></a></li>
+				<li><a href="https://www.instagram.com/roomeo.london/"><i class="fab fa-instagram"></i></a></li>
+				<!-- <li><a href="#!"><i class="fab fa-youtube"></i></a></li> -->
 			</ul>
 		</div>
 

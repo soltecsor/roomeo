@@ -56,3 +56,4 @@ $('#message-textarea').click(function(){
     $(this).css('border', '2px solid #f0f0ff');
     $('#blankField').fadeOut('slow');
 })
+

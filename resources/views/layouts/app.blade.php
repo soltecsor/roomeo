@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('public/assets/images/favicon.png')}}">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -86,8 +86,8 @@
     <!-- ============================================================== -->
     <script src="{{ asset('public/plugins/styleswitcher/jQuery.style.switcher.js') }}"></script>  
 
-    <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
-    <script>
+    <!-- <script src="{{asset('public/vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script> -->
+    <!-- <script>
         CKEDITOR.replace( 'ckeditor',
         {
           customConfig : 'config.js',
@@ -100,7 +100,7 @@
           customConfig : 'config.js',
           toolbar : 'simple'
         });
-    </script>
+    </script> -->
 </body>
 
 </html>

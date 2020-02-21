@@ -9,13 +9,17 @@
 		<title>Roomeo Home Sharing</title>
 
 		<!-- FAVICON -->
-		<link rel="shortcut icon" href="public/assets/images/favicon.png">
+		<link rel="shortcut icon" href="{{asset('public/assets/images/favicon.png')}}">
 
 		<!-- CSS -->
-		<link rel="stylesheet" type="text/css" href="public/portal/assets/css/plugins.css">
+		<link rel="stylesheet" type="text/css" href="{{asset('public/portal/assets/css/plugins.css')}}">
   		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
-		<link rel="stylesheet" type="text/css" href="public/portal/assets/css/style.min.css">
+		<link rel="stylesheet" type="text/css" href="{{ asset('public/portal/assets/css/style.min.css')}}">
+
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+
 
 	</head>
 
@@ -67,9 +71,9 @@
 								</div> --}}
 								<div class="social-media ul-li-right float-right">
 									<ul class="clearfix">
-										<li><a href="#!"><i class="fab fa-facebook-f"></i></a></li>
-										<li><a href="#!"><i class="fab fa-instagram"></i></a></li>
-										<li><a href="#!"><i class="fab fa-youtube"></i></a></li>
+										<li><a href="https://www.facebook.com/roomeo.london/"><i class="fab fa-facebook-f"></i></a></li>
+										<li><a href="https://www.instagram.com/roomeo.london/"><i class="fab fa-instagram"></i></a></li>
+										<!-- <li><a href="#!"><i class="fab fa-youtube"></i></a></li> -->
 									</ul>
 								</div>
 							</div>
@@ -86,7 +90,7 @@
 							<div class="col-lg-3 col-md-12 col-sm-12">
 								<div class="brand-logo">
 									<a href="{!! url('/') !!}" class="brand-link text-center">
-										<img src="http://roomeouk.com/roomeo/public/portal/assets/images/logo.png" alt="Welcome to Roomeo Home Sharing!">
+										<img src="{{asset('public/portal/assets/images').'/logo.png'}}" alt="Welcome to Roomeo Home Sharing!">
 									</a>
 									<button type="button" id="sidebar-collapse" class="mobile-menu-btn float-right"><i class="fal fa-bars"></i></button>
 								</div>
@@ -121,7 +125,7 @@
         
                                     <div class="brand-logo">
                                         <a href="index.html" class="brand-link">
-                                            <img src="http://roomeouk.com/roomeo/public/portal/assets/images/logo_negativo.svg" alt="Roomeo Home Sharing">
+                                            <img src="{{ asset('public/portal/assets/images').'/logo_negativo.svg'}}" alt="Roomeo Home Sharing">
                                         </a>
                                     </div>
 
@@ -153,8 +157,8 @@
                                 <div class="footer-newsletter clearfix">
                                     <div class="social-media ul-li clearfix">
                                         <ul class="clearfix">
-                                            <li><a href="https://www.facebook.com/roomeouk/"><i class="fab fa-facebook-f" target="_blank"></i> Facebook</a></li>
-                                            <li><a href="https://www.instagram.com/roomeouk/"><i class="fab fa-instagram" target="_blank"></i> Instagram</a></li>
+                                            <li><a href="https://www.facebook.com/roomeo.london/"><i class="fab fa-facebook-f" target="_parent"></i> Facebook</a></li>
+                                            <li><a href="https://www.instagram.com/roomeo.london/"><i class="fab fa-instagram" target="_parent"></i> Instagram</a></li>
                                             <!-- <li><a href="#!"><i class="fab fa-youtube"></i> Youtube</a></li> -->
                                         </ul>
                                     </div>
