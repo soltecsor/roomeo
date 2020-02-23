@@ -1,18 +1,17 @@
 <section class="property-section sec-ptb-0 clearfix" id="arthur">
 	<div class="container">
-    <div><p>((info))</p></div>
-
 		<div class="section-title mb-30 text-center">
 			<span class="small-title"></span>
 			<!-- <h2 class="big-title mb-0">Recently Added Rooms</h2> -->
 		</div>        
 		<div class="row property-destaques">
+			<div class="col-lg-4 col-md-6 col-sm-12" v-for="(unit, index) in units.data" :key="index">
+			<!-- ([unit.image_urls]) -->
 
-			<div class="col-lg-4 col-md-6 col-sm-12">
 				<div class="property-grid-item">
-
+					<!-- ([unit.image_urls]) -->
 					<div class="property-image image-container">
-						<div class="post-admin">
+						<div class="post-admin" v-show="unit.unit_status == 'Available To Let'">
 							<a class="admin-link" href="#!">
 								Available Now
 							</a>
@@ -24,48 +23,79 @@
 						</div>
 						<div class="image-carousel-container">
 							<div id="details-image-carousel" class="owl-carousel owl-theme owl-property owl-loaded owl-drag">
-								
-								
-								
-							<div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-740px, 0px, 0px); transition: all 0s ease 0s; width: 2590px;"><div class="owl-item cloned" style="width: 370px;"><div class="item">
-									<a href="uploads/slider/slide01.jpg" data-toggle="lightbox" data-gallery="property"><img src="{{ asset('public/portal/uploads/slider/slide01.jpg')}}" alt="roomeo home sharing" class="img-fluid"></a>
-								</div></div><div class="owl-item cloned" style="width: 370px;"><div class="item">
-									<a href="uploads/slider/slide01.jpg" data-toggle="lightbox" data-gallery="property"><img src="{{ asset('public/portal/uploads/slider/slide01.jpg')}}" alt="roomeo home sharing" class="img-fluid"></a>
-								</div></div><div class="owl-item active" style="width: 370px;"><div class="item">
-									<a href="uploads/slider/slide01.jpg" data-toggle="lightbox" data-gallery="property"><img src="{{ asset('public/portal/uploads/slider/slide01.jpg')}}" alt="roomeo home sharing" class="img-fluid"></a>
-								</div></div><div class="owl-item" style="width: 370px;"><div class="item">
-									<a href="uploads/slider/slide01.jpg" data-toggle="lightbox" data-gallery="property"><img src="{{ asset('public/portal/uploads/slider/slide01.jpg')}}" alt="roomeo home sharing" class="img-fluid"></a>
-								</div></div><div class="owl-item" style="width: 370px;"><div class="item">
-									<a href="uploads/slider/slide01.jpg" data-toggle="lightbox" data-gallery="property"><img src="{{ asset('public/portal/uploads/slider/slide01.jpg')}}" alt="roomeo home sharing" class="img-fluid"></a>
-								</div></div><div class="owl-item cloned" style="width: 370px;"><div class="item">
-									<a href="uploads/slider/slide01.jpg" data-toggle="lightbox" data-gallery="property"><img src="{{ asset('public/portal/uploads/slider/slide01.jpg')}}" alt="roomeo home sharing" class="img-fluid"></a>
-								</div></div><div class="owl-item cloned" style="width: 370px;"><div class="item">
-									<a href="uploads/slider/slide01.jpg" data-toggle="lightbox" data-gallery="property"><img src="{{ asset('public/portal/uploads/slider/slide01.jpg')}}" alt="roomeo home sharing" class="img-fluid"></a>
-								</div></div></div></div><div class="owl-nav"><button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button></div><div class="owl-dots"><button role="button" class="owl-dot active"><span></span></button><button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot"><span></span></button></div></div>
+								<div class="owl-stage-outer">
+									<div class="owl-stage" style="transform: translate3d(-740px, 0px, 0px); transition: all 0s ease 0s; width: 2590px;">
+											<div class="owl-item cloned" style="width: 370px;" v-for="(img, i) of unit.image_urls" :key="i">
+												<div class="item">
+													<a :href="img" data-toggle="lightbox" data-gallery="property">
+														<img :src="img.replace('download','view')" alt="roomeo home sharing" class="img-fluid"/>
+													</a>
+												</div>
+											</div>
+											<!-- <div class="owl-item cloned" style="width: 370px;">
+												<div class="item">
+													<a href="uploads/slider/slide01.jpg" data-toggle="lightbox" data-gallery="property"><img src="{{ asset('public/portal/uploads/slider/slide01.jpg')}}" alt="roomeo home sharing" class="img-fluid"></a>
+												</div>
+											</div>
+											<div class="owl-item active" style="width: 370px;">
+												<div class="item">
+													<a href="uploads/slider/slide01.jpg" data-toggle="lightbox" data-gallery="property"><img src="{{ asset('public/portal/uploads/slider/slide01.jpg')}}" alt="roomeo home sharing" class="img-fluid"></a>
+												</div>
+											</div>
+											<div class="owl-item" style="width: 370px;">
+												<div class="item">
+													<a href="uploads/slider/slide01.jpg" data-toggle="lightbox" data-gallery="property"><img src="{{ asset('public/portal/uploads/slider/slide01.jpg')}}" alt="roomeo home sharing" class="img-fluid"></a>
+												</div>
+											</div>
+											<div class="owl-item" style="width: 370px;">
+												<div class="item">
+													<a href="uploads/slider/slide01.jpg" data-toggle="lightbox" data-gallery="property"><img src="{{ asset('public/portal/uploads/slider/slide01.jpg')}}" alt="roomeo home sharing" class="img-fluid"></a>
+												</div>
+											</div>
+											<div class="owl-item cloned" style="width: 370px;">
+												<div class="item">
+													<a href="uploads/slider/slide01.jpg" data-toggle="lightbox" data-gallery="property"><img src="{{ asset('public/portal/uploads/slider/slide01.jpg')}}" alt="roomeo home sharing" class="img-fluid"></a>
+												</div>
+											</div>
+											<div class="owl-item cloned" style="width: 370px;">
+												<div class="item">
+													<a href="uploads/slider/slide01.jpg" data-toggle="lightbox" data-gallery="property"><img src="{{ asset('public/portal/uploads/slider/slide01.jpg')}}" alt="roomeo home sharing" class="img-fluid"></a>
+												</div>
+											</div> -->
+										</div>
+									</div>
+								<!-- <div class="owl-nav"><button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button></div><div class="owl-dots"><button role="button" class="owl-dot active"><span></span></button><button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot"><span></span></button></div> -->
+							</div>
 						</div>
 						<div class="action-btns-group ul-li-right clearfix">
 							<ul class="clearfix">
-								<li><a href="uploads/slider/slide01.jpg" data-toggle="lightbox" data-gallery="property"><i class="far fa-search"></i></a></li>
-								<li><a href="wishlist.php"><i class="far fa-heart"></i></a></li>
+								<li><a href="#" data-toggle="lightbox" data-gallery="property"><i class="far fa-search"></i></a></li>
+								<!-- <li><a href="wishlist.php"><i class="far fa-heart"></i></a></li> -->
 							</ul>
 						</div>
 					</div>
 
-					<div class="property-content" onclick="window.location.href='room-details.php';">
-						<span class="disponivel">Available from <strong>07 November</strong></span>			
+					<div class="property-content" onclick="window.location.href='room-details';">
+						<span class="disponivel" v-if="unit.available_from != null">Available from <strong>([getDate(unit.available_from)])</strong></span>			
 						<h2 class="item-title">
-							<a href="room-details.php" class="title-link">Renovated apartment at floor in bathroom.</a>
+							<a href="room-details.php" class="title-link">([unit.short_description])</a>
 						</h2>						
 						<div class="price-and-location ul-li clearfix">
 							<div class="post-meta ul-li clearfix">
 								<ul class="clearfix">
-									<li><a href="#!"><i class="far fa-bed"></i> 1 BD</a></li>
-									<li><a href="#!"><i class="fas fa-bath"></i> 1 BA</a></li>
+									<li v-show="unit.bedrooms != 'N/A'"><a href="#!"><i class="far fa-bed"></i>([unit.bedrooms])</a></li>
+									<li v-show="unit.bathrooms != 'N/A'"><a href="#!"><i class="fas fa-bath"></i>([unit.bathrooms])</a></li>
+									<li v-show="unit.furnished != ''"><a href="#!"><i class="fas fa-chair"></i>([unit.furnished])</a></li>
+									<li v-show="unit.floors != ''"><a href="#!"><i class="fas fa-building"></i>([unit.floors])</a></li>
+									<li v-show="unit.receptions != 'N/A'"><a href="#!"><i class="fas fa-user-shield"></i>([unit.receptions])</a></li>
+									<li v-show="unit.max_occupancy != 'N/A'"><a href="#!"><i class="fas fa-male"></i>([unit.max_occupancy])</a></li>
+									<li v-show="unit.area != ''"><a href="#!"><i class="fas fa-map-marked"></i>([unit.area])</a></li>
+									<li v-show="unit.size != ''"><a href="#!"><i class="fas fa-bath"></i>([unit.size])</a></li>
 								</ul>
 							</div>
 							<ul class="clearfix">
-								<li class="text-left"><strong class="price-text">£ 2,200.00 </strong><small>/month</small></li>
-								<li class="text-right"><i class="fal fa-map-marker-alt"></i> Los angels, ca</li>
+								<li class="text-left"><strong class="price-text">£ ([unit.market_rent]).00 </strong><small>/([unit.market_frenquency == null ? 'month' : unit.market_frenquency])</small></li>
+								<li class="text-right"><i class="fal fa-map-marker-alt"></i> ([unit.city]), ([unit.country == 'United Kingdom' ? 'UK' : ''])</li>
 							</ul>
 						</div>
 					</div>
@@ -77,18 +107,85 @@
 </section>
 
 <script type="application/javascript">
-    var app = new Vue({
-        delimiters: ['((', '))'],
+
+    let app = new Vue({
+        delimiters: ['([', '])'],
         el: '#arthur',
         data () {
             return {
-            info: null
+				units:{data:null},
+				image_urls:null,
+				error:null,
+				// access_token:"c4f245ae77947eb7364d9112b1e612d4d2fa2d33c66980867f57a4c616ed3347",
+				// refresh_token:"bfee562b151b4ba8fe2c4f0c4babab7c9008bc7f79932091437bae55ee064087",
+				url:'https://api.arthuronline.co.uk/v2/',
+				urlRefresh:' https://auth.arthuronline.co.uk/',
+				grant_type:'refresh_token',
+				client_id:'c163687de105827e9c35765fadd4b5fc6c356ae6c60f4d1fd608bf10d7c0307e',
+				client_secret:'db031ae061087a44424da28ed015c714c3c8824147984f6896730c3a5ac77b32',
+				entity:'82013'
             }
         },
-        mounted () {
-            axios
-            .get('https://api.coindesk.com/v1/bpi/currentprice.json')
-            .then(response => (this.info = response))
-        }
+		created(){
+			localStorage.clear()
+			localStorage.setItem('access_token', 'c4f245ae77947eb7364d9112b1e612d4d2fa2d33c66980867f57a4c616ed3347')
+			localStorage.setItem('refresh_token', 'bfee562b151b4ba8fe2c4f0c4babab7c9008bc7f79932091437bae55ee064087')
+		},
+        mounted () {	
+           this.getUnits()
+        },
+		methods: {
+			getUnits(){
+				let header = {
+                'Authorization':'Bearer '+localStorage.getItem('access_token'),
+                'X-EntityID': this.entity
+        		}
+				axios
+				.get(this.url+'units',{"headers":header})
+				.then(response => {
+					console.log(response.data)
+
+					this.units = response.data
+					})
+				.catch(error => {
+					this.error = error.response.status
+					if(this.error === 401){
+						//this.refreshToken()
+					}
+				});
+			},
+			refreshToken(){
+				
+				let myHeaders = new Headers();
+				myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+				myHeaders.append("Authorization", "Bearer "+localStorage.getItem('access_token'));
+
+				let urlencoded = new URLSearchParams();
+				urlencoded.append("grant_type", this.grant_type);
+				urlencoded.append("client_id", this.client_id);
+				urlencoded.append("client_secret", this.client_secret);
+				urlencoded.append("refresh_token", localStorage.getItem('refresh_token'));
+
+				let requestOptions = {
+				method: 'POST',
+				headers: myHeaders,
+				body: urlencoded,
+				redirect: 'follow'
+				};
+
+				fetch(this.urlRefresh+"oauth/token", requestOptions)
+				.then(response => response.text())
+				.then(result => localStorage.token = result)
+				.catch(error => console.log('error', error));
+			},
+			getDate(unit){
+				let date = new Date(unit)
+				let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September","October", "November", "December"]
+				let day = date.getDate()
+				let monthIndex = date.getMonth()
+
+				return day + ' ' + monthNames[monthIndex];
+			}
+		}
     })
 </script>
