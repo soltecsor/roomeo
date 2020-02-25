@@ -1,6 +1,6 @@
 <!-- about-section -->
 @foreach($abouts as $about)
-<section id="about-section" class="about-section clearfix" style="background-image: url(http://roomeouk.com/roomeo/public/uploads/slider/slide01.jpg);">
+<section id="about-section" class="about-section clearfix">
 	<div class="overlay-white sec-ptb-120 clearfix">
 		<div class="container">
 			<div class="row justify-content-lg-start justify-content-md-center">

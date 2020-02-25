@@ -84,11 +84,11 @@ Route::get('/contact', 'ContactController@index');
 
 Route::get('/blog-details', function () {
     return view('portal.blog-details');
-});
+});   
 
 Route::get('/terms', 'PortalController@index_terms');
 
-Route::get('room-details/{id}', 'UnitController@getId');
+Route::get('/room-details', 'UnitController@getId');
 
 Route::get('/landlord', 'LandlordController@index');
 

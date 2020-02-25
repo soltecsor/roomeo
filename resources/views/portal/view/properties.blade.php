@@ -1,15 +1,12 @@
 <section class="property-section sec-ptb-0 clearfix" id="arthur">
 	<div class="container">
-		<div class="section-title mb-30 text-center">
+	<div class="section-title mb-30 text-center">
 			<span class="small-title"></span>
-			<!-- <h2 class="big-title mb-0">Recently Added Rooms</h2> -->
+			<h2 class="big-title mb-0">Recently Added Rooms</h2>
 		</div>        
 		<div class="row property-destaques">
-			<div class="col-lg-4 col-md-6 col-sm-12" v-for="(unit, index) in units.data" :key="index">
-			<!-- ([unit.image_urls]) -->
-
+			<div class="col-lg-4 col-md-6 col-sm-12" v-for="(unit,index) of units.data" :key="index">
 				<div class="property-grid-item">
-					<!-- ([unit.image_urls]) -->
 					<div class="property-image image-container">
 						<div class="post-admin" v-show="unit.unit_status == 'Available To Let'">
 							<a class="admin-link" href="#!">
@@ -21,64 +18,36 @@
 								<li class="bg-default-checked"><a href="#!">checked</a></li>
 							</ul>
 						</div>
-						<div class="image-carousel-container">
+
+						<div class="image-carousel-container"> 
 							<div id="details-image-carousel" class="owl-carousel owl-theme owl-property owl-loaded owl-drag">
-								<div class="owl-stage-outer">
-									<div class="owl-stage" style="transform: translate3d(-740px, 0px, 0px); transition: all 0s ease 0s; width: 2590px;">
-											<div class="owl-item cloned" style="width: 370px;" v-for="(img, i) of unit.image_urls" :key="i">
-												<div class="item">
-													<a :href="img" data-toggle="lightbox" data-gallery="property">
-														<img :src="img.replace('download','view')" alt="roomeo home sharing" class="img-fluid"/>
-													</a>
-												</div>
+								<div class="owl-stage-outer" v-if="unit.image_urls.length > 0">	
+								<div class="owl-stage" style="transform: translate3d(-739px, 0px, 0px); transition: all 0.25s ease 0s; width: 2590px;">
+										<div :class="i === 0 ? 'owl-item active' : 'owl-item'" style="width: 370px;" v-for="(image,i) of unit.image_urls" :key="i">
+											<div class="item">
+												<a :href="image.replace('download','view')" data-toggle="lightbox" data-gallery="property">
+													<img v-show="image != ''" :src="image.replace('download','view')" alt="roomeo home sharing" class="img-fluid">
+												</a>
 											</div>
-											<!-- <div class="owl-item cloned" style="width: 370px;">
-												<div class="item">
-													<a href="uploads/slider/slide01.jpg" data-toggle="lightbox" data-gallery="property"><img src="{{ asset('public/portal/uploads/slider/slide01.jpg')}}" alt="roomeo home sharing" class="img-fluid"></a>
-												</div>
-											</div>
-											<div class="owl-item active" style="width: 370px;">
-												<div class="item">
-													<a href="uploads/slider/slide01.jpg" data-toggle="lightbox" data-gallery="property"><img src="{{ asset('public/portal/uploads/slider/slide01.jpg')}}" alt="roomeo home sharing" class="img-fluid"></a>
-												</div>
-											</div>
-											<div class="owl-item" style="width: 370px;">
-												<div class="item">
-													<a href="uploads/slider/slide01.jpg" data-toggle="lightbox" data-gallery="property"><img src="{{ asset('public/portal/uploads/slider/slide01.jpg')}}" alt="roomeo home sharing" class="img-fluid"></a>
-												</div>
-											</div>
-											<div class="owl-item" style="width: 370px;">
-												<div class="item">
-													<a href="uploads/slider/slide01.jpg" data-toggle="lightbox" data-gallery="property"><img src="{{ asset('public/portal/uploads/slider/slide01.jpg')}}" alt="roomeo home sharing" class="img-fluid"></a>
-												</div>
-											</div>
-											<div class="owl-item cloned" style="width: 370px;">
-												<div class="item">
-													<a href="uploads/slider/slide01.jpg" data-toggle="lightbox" data-gallery="property"><img src="{{ asset('public/portal/uploads/slider/slide01.jpg')}}" alt="roomeo home sharing" class="img-fluid"></a>
-												</div>
-											</div>
-											<div class="owl-item cloned" style="width: 370px;">
-												<div class="item">
-													<a href="uploads/slider/slide01.jpg" data-toggle="lightbox" data-gallery="property"><img src="{{ asset('public/portal/uploads/slider/slide01.jpg')}}" alt="roomeo home sharing" class="img-fluid"></a>
-												</div>
-											</div> -->
 										</div>
 									</div>
-								<!-- <div class="owl-nav"><button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button></div><div class="owl-dots"><button role="button" class="owl-dot active"><span></span></button><button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot"><span></span></button></div> -->
+
+								</div>
+								<div class="owl-nav"><button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button></div>
+								<div class="owl-dots"><button role="button" class="owl-dot active"><span></span></button><button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot"><span></span></button></div>
 							</div>
-						</div>
+						</div>  
 						<div class="action-btns-group ul-li-right clearfix">
 							<ul class="clearfix">
 								<li><a href="#" data-toggle="lightbox" data-gallery="property"><i class="far fa-search"></i></a></li>
-								<!-- <li><a href="wishlist.php"><i class="far fa-heart"></i></a></li> -->
 							</ul>
 						</div>
-					</div>
+					</div> 
 
-					<div class="property-content" onclick="window.location.href='room-details';">
+					 <div class="property-content" onclick="window.location.href='room-details';">
 						<span class="disponivel" v-if="unit.available_from != null">Available from <strong>([getDate(unit.available_from)])</strong></span>			
 						<h2 class="item-title">
-							<a href="room-details.php" class="title-link">([unit.short_description])</a>
+							<a href="{{url('room-details')}}" @click="roomDetail(unit.id)" class="title-link">([unit.short_description])</a>
 						</h2>						
 						<div class="price-and-location ul-li clearfix">
 							<div class="post-meta ul-li clearfix">
@@ -98,12 +67,13 @@
 								<li class="text-right"><i class="fal fa-map-marker-alt"></i> ([unit.city]), ([unit.country == 'United Kingdom' ? 'UK' : ''])</li>
 							</ul>
 						</div>
-					</div>
+					</div> 
 
 				</div>
 			</div>
 
 	</div>
+	
 </section>
 
 <script type="application/javascript">
@@ -132,27 +102,25 @@
 			localStorage.setItem('refresh_token', 'bfee562b151b4ba8fe2c4f0c4babab7c9008bc7f79932091437bae55ee064087')
 		},
         mounted () {	
-           this.getUnits()
+		   this.getUnits()
         },
 		methods: {
 			getUnits(){
 				let header = {
                 'Authorization':'Bearer '+localStorage.getItem('access_token'),
                 'X-EntityID': this.entity
-        		}
-				axios
-				.get(this.url+'units',{"headers":header})
-				.then(response => {
-					console.log(response.data)
-
-					this.units = response.data
-					})
-				.catch(error => {
-					this.error = error.response.status
-					if(this.error === 401){
-						//this.refreshToken()
-					}
-				});
+				}
+				let requestOptions = {
+					method: 'GET',
+					headers: header,
+					redirect: 'follow'
+				};
+				fetch(this.url+'units', requestOptions)
+				.then(response => response.text())
+				.then(result => {
+					this.units = JSON.parse(result)}
+					)
+				.catch(error => console.log('error', error));
 			},
 			refreshToken(){
 				
@@ -185,7 +153,12 @@
 				let monthIndex = date.getMonth()
 
 				return day + ' ' + monthNames[monthIndex];
+			},
+
+			roomDetail(unitId){
+				localStorage.unitId = unitId
 			}
 		}
-    })
+	})
+	
 </script>

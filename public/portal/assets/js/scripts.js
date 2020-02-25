@@ -9,6 +9,7 @@
 
 
 (function($) {
+  
   "use strict";
 
   $('.owl-parceiros').owlCarousel({
@@ -32,12 +33,16 @@
     }
   });  
 
-
+setTimeout(()=>{
   $('.owl-property').owlCarousel({
     loop:true,
     margin:0,
     nav:true,
-    dots: true,
+    dots: false,
+    autoplay:true,
+    smartSpeed:1000,
+    autoplayTimeout:4000,
+    autoplayHoverPause:true,
     responsive:{
         0:{
             items:1
@@ -52,7 +57,9 @@
             items:1
         }
     }
-  });  
+  }); 
+}, 4000)
+   
 
 
   // main-slider-1 - start

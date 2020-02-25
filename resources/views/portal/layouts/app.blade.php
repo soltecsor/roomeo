@@ -16,11 +16,9 @@
   		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
 		<link rel="stylesheet" type="text/css" href="{{ asset('public/portal/assets/css/style.min.css')}}">
-
-        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-
+        <script src="public/portal/assets/js/jquery-3.4.1.min.js"></script>
+        <script src="{{asset('public/js/vue.js')}}"></script>
+        <script src="{{asset('public/js/axios.js')}}"></script>
 
 	</head>
 
@@ -125,7 +123,7 @@
                                 <div class="about-content">
         
                                     <div class="brand-logo">
-                                        <a href="index.html" class="brand-link">
+                                        <a href="{{url('/')}}" class="brand-link">
                                             <img src="{{ asset('public/portal/assets/images').'/logo_negativo.svg'}}" alt="Roomeo Home Sharing">
                                         </a>
                                     </div>
@@ -187,15 +185,15 @@
     
     <!-- JS 
     o plugin requer o arquivo map (abaixo) importado via cdn -->
-    <script src="public/portal/assets/js/jquery-3.4.1.min.js"></script>
+    <!-- <script src="public/portal/assets/js/jquery-3.4.1.min.js"></script> -->
     <script src="public/portal/assets/js/jquery-ui.js"></script>
     <script src="public/portal/assets/js/plugins.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js.map"></script>
     <script src="public/portal/assets/js/scripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
     <script src="{{asset('public/js').'/emailValidate.js'}}"></script>
+
     <!-- <script src="{{asset('public/js/app.js')}}"></script> -->
 
-    {{-- require_once('inc/svg.php') --}}
     @include('portal.inc.svg')
     
     </body>

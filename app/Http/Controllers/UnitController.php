@@ -7,9 +7,8 @@ use Illuminate\Support\Facades\Validator;
 
 class UnitController extends Controller
 {
-    public function getId($idUnit){
-        $id_unit = $idUnit;
+    public function getId(){
 
-        return view('portal.room-details', compact('id_unit'));
+        return view('portal.room-details');
     }
 }
