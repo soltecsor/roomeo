@@ -126,7 +126,7 @@
 					<div class="col-lg-6 col-md-6 col-sm-12">
 						<div class="team-member-item">
 							<div class="image-container">
-								<img src="http://roomeouk.com/roomeo/public/portal/assets/images/team/{{ $team->team_member_two_img }}" alt="Juliano de Conto">		
+								<img src="{{ asset('public/portal/assets/images/team').'/'.$team->team_member_two_img }}" alt="Juliano de Conto">		
 							</div>
 							<div class="member-info">
 								<h3 class="member-name">{{ $team->team_member_two_name }}</h3>

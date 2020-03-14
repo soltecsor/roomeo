@@ -80,61 +80,61 @@ setTimeout(()=>{
   $('select').niceSelect();
 
   /* isto pode ser melhorado após implementação do sistema */
-  $('#from').datetimepicker({
-      onShow:function( ct ){
-        this.setOptions({
-        maxDate:$('#to').val()?$('#to').val():false
-      });
+  // $('#from').datetimepicker({
+  //     onShow:function( ct ){
+  //       this.setOptions({
+  //       maxDate:$('#to').val()?$('#to').val():false
+  //     });
       
-      $('.xdsoft_datepicker.active').find('.xdsoft_save_selected.blue-gradient-button').addClass('btnFrom').text('').html('<i class="far fa-check"></i> My move-in date is flexible').show();
-    },
-    timepicker:false,
-    inline:false,
-    lang:'en', 
-    closeOnDateSelect:true,
-    todayButton: false,
-    timepickerScrollbar: true,
-    format:'d/m/Y'
-  });
+  //     $('.xdsoft_datepicker.active').find('.xdsoft_save_selected.blue-gradient-button').addClass('btnFrom').text('').html('<i class="far fa-check"></i> My move-in date is flexible').show();
+  //   },
+  //   timepicker:false,
+  //   inline:false,
+  //   lang:'en', 
+  //   closeOnDateSelect:true,
+  //   todayButton: false,
+  //   timepickerScrollbar: true,
+  //   format:'d/m/Y'
+  // });
 
-  $('#to').datetimepicker({
-    onShow:function( ct ){
-        this.setOptions({
-          minDate:jQuery('#from').val()?jQuery('#from').val():false
-        });
+  // $('#to').datetimepicker({
+  //   onShow:function( ct ){
+  //       this.setOptions({
+  //         minDate:jQuery('#from').val()?jQuery('#from').val():false
+  //       });
 
-        $('.xdsoft_datepicker.active').find('.xdsoft_save_selected.blue-gradient-button').addClass('btnTo').text('').html('<i class="far fa-check"></i> My move-out date is flexible').show();
+  //       $('.xdsoft_datepicker.active').find('.xdsoft_save_selected.blue-gradient-button').addClass('btnTo').text('').html('<i class="far fa-check"></i> My move-out date is flexible').show();
 
-    },
-    timepicker:false,
-    inline:false,
-    lang:'en', 
-    closeOnDateSelect:true,
-    todayButton: false,
-    timepickerScrollbar: true,
-    mask: false,
-    format:'d/m/Y'
-  });
+  //   },
+  //   timepicker:false,
+  //   inline:false,
+  //   lang:'en', 
+  //   closeOnDateSelect:true,
+  //   todayButton: false,
+  //   timepickerScrollbar: true,
+  //   mask: false,
+  //   format:'d/m/Y'
+  // });
 
-  $('#visite').datetimepicker({
-    onShow:function( ct ){
-      $('.xdsoft_datepicker.active').find('.xdsoft_save_selected.blue-gradient-button').text('').html('<i class="far fa-check"></i> My move-in date is flexible').show();
-    },
-    timepicker:true,
-    inline:false,
-    lang:'en', 
-    closeOnDateSelect:true,
-    todayButton: true,
-    timepickerScrollbar: true,
-    format:'d/m/Y H:i'
-  });
+  // $('#visite').datetimepicker({
+  //   onShow:function( ct ){
+  //     $('.xdsoft_datepicker.active').find('.xdsoft_save_selected.blue-gradient-button').text('').html('<i class="far fa-check"></i> My move-in date is flexible').show();
+  //   },
+  //   timepicker:true,
+  //   inline:false,
+  //   lang:'en', 
+  //   closeOnDateSelect:true,
+  //   todayButton: true,
+  //   timepickerScrollbar: true,
+  //   format:'d/m/Y H:i'
+  // });
 
 
-  $(".datetimepicker, .visite").keyup(function() {
-    $(this).datetimepicker('hide');
-    $('.datetimepicker').datetimepicker({ mask:true });
-    $('.visite').datetimepicker({ mask:true });
-  });
+  // $(".datetimepicker, .visite").keyup(function() {
+  //   $(this).datetimepicker('hide');
+  //   $('.datetimepicker').datetimepicker({ mask:true });
+  //   $('.visite').datetimepicker({ mask:true });
+  // });
 
 
  $('.type-select-form').click(function(e) {
@@ -182,7 +182,9 @@ setTimeout(()=>{
         neg = true;
         total = Math.abs(total);
     } 
-    return (neg ? "-£ " : '£ ') + parseFloat(total, 10).toFixed(3).replace(/(\d)(?=(\d{3})+\.)/g, "£ 1,").toString();
+    //return (neg ? "-£ " : '£ ') + parseFloat(total, 10).toFixed(3).replace(/(\d)(?=(\d{3})+\.)/g, "£ 1,").toString();
+    return (neg ? "-£ " : '£ ') + parseFloat(total, 10).toFixed(0).replace(/(\d)(?=(\d{3})+\.)/g, "£ 1,").toString() + ' + pcm';
+
   }
 
 
@@ -541,42 +543,42 @@ setTimeout(()=>{
 /* Range */
    //(function() {
 
-    function addSeparator(nStr) {
-        nStr += '';
-        var x = nStr.split('.');
-        var x1 = x[0];
-        var x2 = x.length > 1 ? '.' + x[1] : '';
-        var rgx = /(\d+)(\d{3})/;
-        while (rgx.test(x1)) {
-            x1 = x1.replace(rgx, '$1' + '.' + '$2');
-        }
-        return x1 + x2;
-    }
+    // function addSeparator(nStr) {
+    //     nStr += '';
+    //     var x = nStr.split('.');
+    //     var x1 = x[0];
+    //     var x2 = x.length > 1 ? '.' + x[1] : '';
+    //     var rgx = /(\d+)(\d{3})/;
+    //     while (rgx.test(x1)) {
+    //         x1 = x1.replace(rgx, '$1' + '.' + '$2');
+    //     }
+    //     return x1 + x2;
+    // }
 
-    function rangeInputChangeEventHandler(e){
-        var rangeGroup = $(this).attr('name'),
-            minBtn = $(this).parent().children('.min'),
-            maxBtn = $(this).parent().children('.max'),
-            range_min = $(this).parent().children('.range_min'),
-            range_max = $(this).parent().children('.range_max'),
-            minVal = parseInt($(minBtn).val()),
-            maxVal = parseInt($(maxBtn).val()),
-            origin = $(this).context.className;
+    // function rangeInputChangeEventHandler(e){
+    //     var rangeGroup = $(this).attr('name'),
+    //         minBtn = $(this).parent().children('.min'),
+    //         maxBtn = $(this).parent().children('.max'),
+    //         range_min = $(this).parent().children('.range_min'),
+    //         range_max = $(this).parent().children('.range_max'),
+    //         minVal = parseInt($(minBtn).val()),
+    //         maxVal = parseInt($(maxBtn).val()),
+    //         origin = $(this).context.className;
 
-        if(origin === 'min' && minVal > maxVal-5){
-            $(minBtn).val(maxVal-5);
-        }
-        var minVal = parseInt($(minBtn).val());
-        $(range_min).html('£ ' + addSeparator(minVal*1000) );
+    //     if(origin === 'min' && minVal > maxVal-5){
+    //         $(minBtn).val(maxVal-5);
+    //     }
+    //     var minVal = parseInt($(minBtn).val());
+    //     $(range_min).html('£ ' + addSeparator(minVal*1000) );
 
 
-        if(origin === 'max' && maxVal-5 < minVal){
-            $(maxBtn).val(5+ minVal);
-        }
-        var maxVal = parseInt($(maxBtn).val());
-        $(range_max).html('£ ' + addSeparator(maxVal*1000) );
-    }
+    //     if(origin === 'max' && maxVal-5 < minVal){
+    //         $(maxBtn).val(5+ minVal);
+    //     }
+    //     var maxVal = parseInt($(maxBtn).val());
+    //     $(range_max).html('£ ' + addSeparator(maxVal*1000) );
+    // }
 
- $('input[type="range"]').on( 'input', rangeInputChangeEventHandler);
+ //$('input[type="range"]').on( 'input', rangeInputChangeEventHandler);
 //})();
 

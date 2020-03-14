@@ -3,6 +3,7 @@
 	<div class="section-title mb-30 text-center">
 			<span class="small-title"></span>
 			<h2 class="big-title mb-0">Recently Added Rooms</h2>
+			<small v-if="units.data == null || units.data.length == 0" style="font-size:22px;line-height:50px;text-transform:uppercase;color:#05b59d;">Rooms not found in your search</small>
 		</div>        
 		<div class="row property-destaques">
 			<div class="col-lg-4 col-md-6 col-sm-12" v-for="(unit,index) of units.data" :key="index">
@@ -93,13 +94,14 @@
 				grant_type:'refresh_token',
 				client_id:'c163687de105827e9c35765fadd4b5fc6c356ae6c60f4d1fd608bf10d7c0307e',
 				client_secret:'db031ae061087a44424da28ed015c714c3c8824147984f6896730c3a5ac77b32',
-				entity:'82013'
-            }
+				entity:'82013',
+				locationFilter:localStorage.location
+			}
         },
 		created(){
-			localStorage.clear()
-			localStorage.setItem('access_token', 'c4f245ae77947eb7364d9112b1e612d4d2fa2d33c66980867f57a4c616ed3347')
-			localStorage.setItem('refresh_token', 'bfee562b151b4ba8fe2c4f0c4babab7c9008bc7f79932091437bae55ee064087')
+			//localStorage.clear()
+			localStorage.setItem('access_token', '68c01ad356a99b81fee240c2cf26ed4601ac54c02fe4e304336856a70a555a93')
+			//localStorage.setItem('refresh_token', 'bfee562b151b4ba8fe2c4f0c4babab7c9008bc7f79932091437bae55ee064087')
 		},
         mounted () {	
 		   this.getUnits()
@@ -118,8 +120,32 @@
 				fetch(this.url+'units', requestOptions)
 				.then(response => response.text())
 				.then(result => {
-					this.units = JSON.parse(result)}
-					)
+					let area = localStorage.location 
+					let budgetMin = localStorage.rangeMin
+					let budgetMax = localStorage.rangeMax
+					//let dateTo = localStorage.dateTo
+					let dateFrom = localStorage.dateFrom
+					this.units = JSON.parse(result)
+					if(area !== undefined){
+						area = area.replace(/^./,area[0].toUpperCase());
+						this.units.data = this.units.data.filter(f => f.area == area)
+					}
+
+					if(budgetMax !== undefined  && budgetMin === undefined){
+						budgetMin = 0
+						this.units.data = this.units.data.filter(f => f.market_rent >= budgetMin && f.market_rent <= budgetMax)
+
+					}else if(budgetMax !== undefined  && budgetMin !== undefined){
+						this.units.data = this.units.data.filter(f => f.market_rent >= budgetMin && f.market_rent <= budgetMax)
+					}
+
+					if(dateFrom !== undefined){
+						let checkin = new Date(dateFrom)
+						this.units.data = this.units.data.filter(f => new Date(f.available_from) >= checkin)
+					}
+
+					localStorage.clear()
+				})
 				.catch(error => console.log('error', error));
 			},
 			refreshToken(){

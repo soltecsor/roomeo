@@ -33,41 +33,41 @@
 											<div class="bloco-busca">
 												<div class="rangeslider">
 													<h5>Enter budget range below</h5>	
-												    <input class="min" name="range_1" type="range" min="1" max="100" value="10" />
-												    <input class="max" name="range_1" type="range" min="1" max="100" value="90" />
-												    <span class="range_min light left">£ 10.000</span>
-												    <span class="range_max light right">£ 90.000</span>
+												    <input class="min" name="range_1" type="range" min="0" max="1200" value="0" />
+												    <input class="max" name="range_1" type="range" min="0" max="1200" value="1200" />
+												    <span class="range_min light left">£ 0 pcm</span>
+												    <span class="range_max light right">£ 1,200 + pcm</span>
 												</div>
 											</div>
 										</li>
 										<li>
 											<div class="form-item type-select-form mb-0">
 												<select id="type-select">
-													<option data-display="From/To">From/To</option>
+													<option data-display="Move-in Date">Move-in Date</option>
 												</select>
 												<label for="type-select" class="form-item-btn"><i class="far fa-calendar-alt"></i></label>
 												<a class="toggle-sm"><i class="fas fa-times"></i></a>
 											</div>
 											<div class="bloco-busca">
 												<div class="rangedate">
-													<h5>Choice the better period</h5>
+													<h5>Choose your check-in date</h5>
 													<span>
 														<label for="from">
 															From 
 															<input id="from" name="from" class="datetimepicker" type="text" >
 															<img src="{{ asset('public/portal/assets/images/ico').'/calendar.png'}}" alt="roomeo home sharing" class="calendar" />
 														</label>														
-														<label for="to">
+														<!-- <label for="to">
 															To 
 															<input id="to" name="to" class="datetimepicker" type="text" >
 															<img src="{{ asset('public/portal/assets/images/ico').'/calendar.png'}}" alt="roomeo home sharing" class="calendar" />
-														</label>
+														</label> -->
 													</span>
 												</div>
 											</div>
 										</li>
 										<li>
-											<a class="custom-btn"><i class="far fa-search"></i> Find Rooms</a>
+											<a class="custom-btn" onClick="filter()"><i class="far fa-search"></i> Find Rooms</a>
 										</li>
 									</ul>
 								</div>
@@ -87,4 +87,41 @@
 		</div>
 	</div>
 </section>
+<script type="application/javascript">
+
+	$('.min').on('change', function(){
+		localStorage.setItem('rangeMin',$(this).val())
+	})
+	$('.max').on('change', function(){
+		localStorage.setItem('rangeMax',$(this).val())
+	})
+	$('#location-input').on('change', function(){
+		localStorage.setItem('location',$(this).val())
+	})
+	$('#to').on('click', function(){
+		$(this).datepicker({
+			dateFormat: 'yy-mm-dd',
+			onSelect: function(dateText, inst) { 
+				localStorage.setItem('dateTo',dateText)
+			}
+		});
+	})
+	$('#from').on('click', function(){
+		$(this).datepicker({
+			dateFormat: 'yy-mm-dd',
+			onSelect: function(dateText, inst) { 
+				localStorage.setItem('dateFrom',dateText)
+			}
+		});
+	})
+
+	function filter(){
+		window.location.reload(false);
+	}
+	$(function(){
+		
+
+	})
+
+</script>
 @endforeach
