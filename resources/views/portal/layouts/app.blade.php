@@ -18,7 +18,7 @@
 		<link rel="stylesheet" type="text/css" href="{{ asset('public/portal/assets/css/style.min.css')}}">
         <script src="public/portal/assets/js/jquery-3.4.1.min.js"></script>
         <script src="{{asset('public/js/vue.js')}}"></script>
-        <script src="{{asset('public/js/axios.js')}}"></script>
+        <!-- <script src="{{asset('public/js/axios.js')}}"></script> -->
 
 	</head>
 

@@ -138,7 +138,7 @@
 							<div class="item-icon bg-default-red"><i class="fas fa-map-marker-alt"></i></div>
 							<div class="info-list ul-li-block clearfix">
 								<ul class="clearfix">
-									<li class="item-title">{!! $contact->address !!}</li>
+									<li class="item-title" style="line-height: 25px !important;">{!! $contact->address !!}</li>
 								</ul>
 							</div>
 						</div>

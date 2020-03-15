@@ -139,9 +139,9 @@
 							<h3 class="area-title">Property Features</h3>
 							<ul class="clearfix">
 								<li v-for="(feature,i) in units.features" :key="i">
-									<!-- <svg class="icon">
-									   <use xlink:href="#bedroom"></use>
-									</svg> -->
+									<svg class="icon">
+									   <use :xlink:href="'#'+feature.toLowerCase()"></use>
+									</svg>
 									([feature])
 								</li>
 								<!-- <li>
@@ -1234,7 +1234,8 @@
 		methods: {
 			getUnits(){
 				let header = {
-                'Authorization':'Bearer '+localStorage.getItem('access_token'),
+                //'Authorization':'Bearer '+localStorage.getItem('access_token'),
+				'Authorization':'Bearer 68c01ad356a99b81fee240c2cf26ed4601ac54c02fe4e304336856a70a555a93',
                 'X-EntityID': this.entity
 				}
 				let requestOptions = {

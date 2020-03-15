@@ -18,14 +18,14 @@
 						</div>
 					</div>
 
-					<div class="col-lg-6 col-md-6 col-sm-12 v-center">
+					<!-- <div class="col-lg-6 col-md-6 col-sm-12 v-center">
 						<div class="about-content mt-70">
 							<div class="section-title mb-0">
 								<span class="small-title">You Only Pay Us if We Find You a Tenant.</span>
 								<h2 class="big-title mb-5">Let us take care of your tenant finding process and boost your business efficiency.</h2>
 							</div>
 						</div>
-					</div>
+					</div> -->
 
 				</div>
 
@@ -63,7 +63,7 @@
 
 		<!--
 		================================================== -->
-		<section id="plans-section" class="about-section bg-white sec-ptb-120 pt-0 clearfix">
+		<!-- <section id="plans-section" class="about-section bg-white sec-ptb-120 pt-0 clearfix">
 			<div class="container">
 
 				<div class="col-lg-12 col-md-12 col-sm-12">
@@ -74,7 +74,7 @@
 				</div>
 
 			</div>
-		</section>
+		</section> -->
 
 
 
@@ -83,8 +83,8 @@
 		<section id="prices" class="feature-section prices sec-ptb-120 bg-light-gray clearfix" style="background-image: url(public/portal/assets/images/background/bg_green.jpg);">
 			<div class="container">
 				<div class="section-title text-center mb-30 texto-destaque">
-					<span class="small-title">Our Plans</span>
-					<h2 class="big-title mb-0">We have the right package for your needs and a selection of add-ons that will make your life much easier. Pick yours and start enjoying the benefits today!</h2>
+					<!-- <span class="small-title">Compare Our Plans</span> -->
+					<h2 style="font-size:22px !important">We have the right package for your needs and a selection of add-ons that will make your life much easier. Pick yours and start enjoying the benefits today!</h2>
 				</div>
 				<div class="row">
 				@foreach ($prices as $price)
@@ -122,7 +122,7 @@
 				<div class="col-lg-12 col-md-12 col-sm-12">
 					<div class="section-title text-center">
 						<span class="small-title">Question</span>
-						<h2 class="big-title mb-0">Compare are the plans</h2>
+						<h2 style="font-size:28px !important">Compare our plans</h2>
 					</div>
 				</div>
 
@@ -291,8 +291,8 @@
 			<div class="container">
 
 				<div class="section-title text-center mb-70">
-					<span class="small-title">Steps</span>
-					<h2 class="big-title mb-0">Process</h2>
+					<!-- <span class="small-title">Steps</span> -->
+					<h2 class="big-title mb-0">Steps</h2>
 				</div>
 
 				<div class="row meio">
