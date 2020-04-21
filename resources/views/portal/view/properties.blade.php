@@ -100,16 +100,17 @@
         },
 		created(){
 			//localStorage.clear()
-			localStorage.setItem('access_token', '68c01ad356a99b81fee240c2cf26ed4601ac54c02fe4e304336856a70a555a93')
-			//localStorage.setItem('refresh_token', 'bfee562b151b4ba8fe2c4f0c4babab7c9008bc7f79932091437bae55ee064087')
+			//localStorage.access_token ='10a44a0886e3eea8f63ab24ec5f9748649e24a3f444a38a1c5911eb56359c3a6'
+			//localStorage.refresh_token ='51340ab8193bc9509f6f974dfeee3bab77be7e47e44079f77de5b34832230dc7'
 		},
         mounted () {	
 		   this.getUnits()
+		   this.refreshToken()
         },
 		methods: {
 			getUnits(){
 				let header = {
-                'Authorization':'Bearer '+localStorage.getItem('access_token'),
+                'Authorization':'Bearer '+localStorage.access_token,
                 'X-EntityID': this.entity
 				}
 				let requestOptions = {
@@ -144,7 +145,7 @@
 						this.units.data = this.units.data.filter(f => new Date(f.available_from) >= checkin)
 					}
 
-					localStorage.clear()
+					//localStorage.clear()
 				})
 				.catch(error => console.log('error', error));
 			},
@@ -152,13 +153,13 @@
 				
 				let myHeaders = new Headers();
 				myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
-				myHeaders.append("Authorization", "Bearer "+localStorage.getItem('access_token'));
+				myHeaders.append("Authorization", "Bearer "+localStorage.access_token);
 
 				let urlencoded = new URLSearchParams();
 				urlencoded.append("grant_type", this.grant_type);
 				urlencoded.append("client_id", this.client_id);
 				urlencoded.append("client_secret", this.client_secret);
-				urlencoded.append("refresh_token", localStorage.getItem('refresh_token'));
+				urlencoded.append("refresh_token", localStorage.refresh_token);
 
 				let requestOptions = {
 				method: 'POST',
@@ -169,7 +170,13 @@
 
 				fetch(this.urlRefresh+"oauth/token", requestOptions)
 				.then(response => response.text())
-				.then(result => localStorage.token = result)
+				.then(result => { 
+					data = JSON.parse(result)
+					localStorage.access_token = data.access_token;
+					localStorage.refresh_token = data.refresh_token
+					console.log('@@@@',data)
+					}
+				)
 				.catch(error => console.log('error', error));
 			},
 			getDate(unit){
