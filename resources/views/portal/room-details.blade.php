@@ -62,77 +62,16 @@
 							<p>([units.description]) </p>
 						</div>
 						<div class="ul-li-block mb-70 clearfix">
-							<h4>General Information</h4>
-							<ul class="clearfix mt-4">
-								<!-- <li>
-									<strong>Property Id:</strong>
-									Double bed
-								</li>									
-								<li>
-									<strong>Bedrooms:</strong>
-									Double bed
-								</li>									
-								<li>
-									<strong>Bathrooms:</strong>
-									Double bed
-								</li>									
-								<li>
-									<strong>Living room</strong>
-									Double bed
-								</li>	 -->
-							</ul>
 						</div>
 						<div class="more-features ul-li-block mb-70 clearfix">
 							<h3 class="area-title">Bills included:</h3>
-							<ul class="clearfix">
-								<!--<li>
-									 <svg class="icon">
-									   <use xlink:href="#router"></use>
-									</svg>
-									Internet
+							<ul class="clearfix" v-if="property.length > 0">
+								<li v-for="(feature,i) in property[0].features" :key="i">
+										<svg class="icon">
+										<use :xlink:href="'#'+feature.toLowerCase()"></use>
+										</svg>
+										([feature])
 								</li>
-								<li>
-									<svg class="icon">
-									   <use xlink:href="#telephone"></use>
-									</svg>
-									Telephone
-								</li>
-								<li>
-									<svg class="icon">
-									   <use xlink:href="#hotel"></use>
-									</svg>
-									Contents Insurance
-								</li>
-								<li>
-									<svg class="icon">
-									   <use xlink:href="#electronics"></use>
-									</svg>
-									Electricity
-								</li>
-								<li>
-									<svg class="icon">
-									   <use xlink:href="#satellite"></use>
-									</svg>
-									Cable/Satellite
-								</li>
-								<li>
-									<svg class="icon">
-									   <use xlink:href="#television-1"></use>
-									</svg>
-									TV Licence
-								</li>
-								<li>
-									<svg class="icon">
-									   <use xlink:href="#tap"></use>
-									</svg>
-									Water
-								</li>
-								<li>
-									<svg class="icon">
-									   <use xlink:href="#water-heater"></use>
-									</svg>
-									Gas
-								</li> -->
 							</ul>
 						</div>
 						<div class="more-features ul-li-block mb-70 clearfix">
@@ -417,6 +356,7 @@
         el: '#arthur',
         data () {
             return {
+				property:{},
 				units:{data:null},
 				image_urls:null,
 				error:null,
@@ -429,7 +369,8 @@
             }
         },
         mounted () {	
-           this.getUnits()
+		   this.getUnits()
+		   setTimeout(() => this.getProperty(),2000)
         },
 		methods: {
 			getUnits(){
@@ -446,8 +387,57 @@
 				.then(response => response.text())
 				.then(result => {
 					console.log(JSON.parse(result).data)
-					this.units = JSON.parse(result).data}
-					)
+					this.units = JSON.parse(result).data
+				})
+				.catch(error => console.log('error', error));
+			},
+			getProperty(){
+				let header = {
+                'Authorization':'Bearer '+localStorage.access_token,
+                'X-EntityID': this.entity
+				}
+				let requestOptions = {
+					method: 'GET',
+					headers: header,
+					redirect: 'follow'
+				};
+				fetch(this.url+'properties?Property_Type=Mixed', requestOptions)
+				.then(response => response.text())
+				.then(result => {
+					console.log(JSON.parse(result).data.filter(p => p.id == this.units.property_id))
+					this.property = JSON.parse(result).data.filter(p => p.id == this.units.property_id)
+				})
+				.catch(error => console.log('error', error));
+			},
+			addViewing(){
+				let header = {
+                'Authorization':'Bearer '+localStorage.access_token,
+                'X-EntityID': this.entity
+				}
+				let requestOptions = {
+					method: 'POST',
+					headers: header,
+					redirect: 'follow'
+				};
+				let body = {
+					"unit_id": "4",
+					"applicant_id": "13",
+					"viewing_date": "",
+					"viewing_time": "",
+					"offer_amount": "",
+					"offer_frequency": "",
+					"move_in_date": "",
+					"assigned_to_ids": [
+						"1234"
+					],
+					"source": "",
+					"notes": ""
+				}
+				fetch(this.url+'viewings', body,requestOptions)
+				.then(response => response.text())
+				.then(result => {
+					console.log(result)
+				})
 				.catch(error => console.log('error', error));
 			}	
 		}

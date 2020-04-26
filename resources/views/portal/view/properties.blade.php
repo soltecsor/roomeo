@@ -1,5 +1,5 @@
 <section class="property-section sec-ptb-0 clearfix" id="arthur">
-	<div class="container">
+	<div class="container" id="property-destaques">
 	<div class="section-title mb-30 text-center">
 			<span class="small-title"></span>
 			<h2 class="big-title mb-0">Recently Added Rooms</h2>
@@ -130,14 +130,17 @@
 					if(area !== undefined){
 						area = area.replace(/^./,area[0].toUpperCase());
 						this.units.data = this.units.data.filter(f => f.area == area)
+						document.getElementById('property-destaques').scrollIntoView();
 					}
 
 					if(budgetMax !== undefined  && budgetMin === undefined){
 						budgetMin = 0
 						this.units.data = this.units.data.filter(f => f.market_rent >= budgetMin && f.market_rent <= budgetMax)
+						document.getElementById('property-destaques').scrollIntoView();
 
 					}else if(budgetMax !== undefined  && budgetMin !== undefined){
 						this.units.data = this.units.data.filter(f => f.market_rent >= budgetMin && f.market_rent <= budgetMax)
+						document.getElementById('property-destaques').scrollIntoView();
 					}
 
 					if(dateFrom !== undefined){
@@ -145,7 +148,11 @@
 						this.units.data = this.units.data.filter(f => new Date(f.available_from) >= checkin)
 					}
 
-					//localStorage.clear()
+					localStorage.removeItem('location')
+					localStorage.removeItem('rangeMin')
+					localStorage.removeItem('rangeMax')
+					localStorage.removeItem('dateFrom')
+
 				})
 				.catch(error => console.log('error', error));
 			},
