@@ -1,6 +1,5 @@
 
 $('#sendEmail').click(function(e){
-
     let name = $('#name').val();
     let surname = $('#surname').val();
     let email = $('#email').val();

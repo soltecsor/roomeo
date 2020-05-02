@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Mail;
 class MailController extends Controller
 {
     public function send(Request $request)
-    {
+    {   
         $objRoomeo = new \stdClass();
         $objRoomeo->name = $request->nameMail;
         $objRoomeo->surname = $request->surnameMail;
@@ -20,7 +20,7 @@ class MailController extends Controller
         $objRoomeo->message = $request->messageMail;
         $objRoomeo->sender = $objRoomeo->name;
         $objRoomeo->receiver = 'Roomeo Limited';
-        
+
         if(!$objRoomeo->name || !$objRoomeo->surname || !$objRoomeo->email || !$objRoomeo->phone || !$objRoomeo->message){
             return redirect(url('/contact'));
         }else{

@@ -30,11 +30,8 @@
 								<div class="col-lg-4 col-md-6 col-sm-12">
 									<div class="info-list ul-li-right clearfix">
 										<ul class="clearfix">
-											<li><strong class="price-text">£ ([units.market_rent]).00</strong></li>
-											<!-- neste caso, manter um ou outro, dependendo da disponibilidade -->
-											<li>([units.market_rent_frequency])</li>
-											<!-- <li><span class="item-badge bg-default-lightblue">PW</span></li>
-											PCM or PW -->
+											<li><strong class="price-text">£ ([units.portal_market_rent]).00</strong></li>
+											<li>([units.portal_market_rent_frequency])</li>
 										</ul>
 									</div>
 								</div>
@@ -66,18 +63,18 @@
 						<div class="more-features ul-li-block mb-70 clearfix">
 							<h3 class="area-title">Bills included:</h3>
 							<ul class="clearfix" v-if="property.length > 0">
-								<li v-for="(feature,i) in property[0].features" :key="i">
-										<svg class="icon">
-										<use :xlink:href="'#'+feature.toLowerCase()"></use>
-										</svg>
-										([feature])
+								<li v-for="(bill,i) in bills[0]" :key="i">
+									<svg class="icon">
+									<use :xlink:href="'#'+bill.toLowerCase()"></use>
+									</svg>
+									([bill])
 								</li>
 							</ul>
 						</div>
 						<div class="more-features ul-li-block mb-70 clearfix">
 							<h3 class="area-title">Property Features</h3>
-							<ul class="clearfix">
-								<li v-for="(feature,i) in units.features" :key="i">
+							<ul class="clearfix" v-if="property.length > 0">
+								<li v-for="(feature,i) in features[0]" :key="i">
 									<svg class="icon">
 									   <use :xlink:href="'#'+feature.toLowerCase()"></use>
 									</svg>
@@ -88,108 +85,12 @@
 						<div class="more-features ul-li-block mb-70 clearfix">
 							<h3 class="area-title">Your Bedroom</h3>
 							<ul class="clearfix">
-								<!-- <li>
+								<li v-for="(feature,i) in units.features" :key="i">
 									<svg class="icon">
-									   <use xlink:href="#car"></use>
+									   <use :xlink:href="'#'+feature.toLowerCase()"></use>
 									</svg>
-									Gated
+									([feature])
 								</li>
-								<li>
-									<svg class="icon">
-									   <use xlink:href="#car"></use>
-									</svg>
-									Off Street
-								</li>
-								<li>
-									<svg class="icon">
-									   <use xlink:href="#car"></use>
-									</svg>
-									On Street
-								</li>
-								<li>
-									<svg class="icon">
-									   <use xlink:href="#car"></use>
-									</svg>
-									Rear
-								</li>
-								<li>
-									<svg class="icon">
-									   <use xlink:href="#car"></use>
-									</svg>
-									Permit
-								</li>
-								<li>
-									<svg class="icon">
-									   <use xlink:href="#car"></use>
-									</svg>
-									Private
-								</li>
-								<li>
-									<svg class="icon">
-									   <use xlink:href="#car"></use>
-									</svg>
-									Residents
-								</li>
-								<li>
-									<svg class="icon">
-									   <use xlink:href="#decorating"></use>
-									</svg>
-									Decorating
-								</li>
-								<li>
-									<svg class="icon">
-									   <use xlink:href="#nightstand"></use>
-									</svg>
-									Bedside table
-								</li>
-								<li>
-									<svg class="icon">
-									   <use xlink:href="#bench"></use>
-									</svg>
-									Park in the proximity
-								</li>
-								<li>
-									<svg class="icon">
-									   <use xlink:href="#bar"></use>
-									</svg>
-									Bar
-								</li>
-								<li>
-									<svg class="icon">
-									   <use xlink:href="#bicycle-1"></use>
-									</svg>
-									Bike Storage
-								</li>
-								<li>
-									<svg class="icon">
-									   <use xlink:href="#water-heater"></use>
-									</svg>
-									Gas
-								</li>
-								<li>
-									<svg class="icon">
-									   <use xlink:href="#window-1"></use>
-									</svg>
-									Window
-								</li>
-								<li>
-									<svg class="icon">
-									   <use xlink:href="#window"></use>
-									</svg>
-									Window Street View
-								</li>
-								<li>
-									<svg class="icon">
-									   <use xlink:href="#window"></use>
-									</svg>
-									Window Yard View
-								</li>
-								<li>
-									<svg class="icon">
-									   <use xlink:href="#suitcase"></use>
-									</svg>
-									Suitcase
-								</li> -->
 							</ul>
 						</div>
 
@@ -216,12 +117,12 @@
 						<aside id="sidebar-section" class="sidebar-section clearfix">
 
 							<div class="widget widget_categories ul-li-block clearfix">
-								<h2 class="widget_title mb-30 text-center">£ ([units.market_rent/4]) per week</h2>
+								<h2 class="widget_title mb-30 text-center">£ ([units.portal_market_rent/4]) per week</h2>
 								<hr>
 								<ul class="clearfix">
-									<li><a href="#!">Monthly Rent <span><strong>£ ([units.market_rent]).00</strong></span></a></li>
-									<li><a href="#!">Security Deposit <span><strong>£ ([units.deposit_amount]).00</strong></span></a></li>
-									<li><a href="#!"><b>Total </b><span><strong>£ ([units.market_rent+units.deposit_amount]).00</strong></span></a></li>
+									<li><a href="#!">Monthly Rent <span><strong>£ ([units.portal_market_rent]).00</strong></span></a></li>
+									<li><a href="#!">Security Deposit <span><strong>£ ([units.portal_deposit_amount]).00</strong></span></a></li>
+									<li><a href="#!"><b>Total </b><span><strong>£ ([units.portal_market_rent+units.deposit_amount]).00</strong></span></a></li>
 									<li><a href="#!">Hold Deposit <span><strong>£ 0.00</strong></span></a></li>
 								</ul>
 								<hr>
@@ -239,31 +140,33 @@
 								    <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
 								      <div class="card-body">
 										<div class="form-item">
-											<input id="bv-input-name" type="text" placeholder="First Name">
+											<input id="bv-input-name" type="text" placeholder="First Name" v-model="firstName">
 											<label for="bv-input-name" class="form-item-btn active"><i class="far fa-user"></i></label>
 										</div>
 										<div class="form-item">
-											<input id="bv-input-lastname" type="text" placeholder="Last Name">
+											<input id="bv-input-lastname" type="text" placeholder="Last Name"  v-model="lastName">
 											<label for="bv-input-lastname" class="form-item-btn active"><i class="far fa-user"></i></label>
 										</div>
 										<div class="form-item">
-											<input id="bv-input-email" type="email" placeholder="E-mail">
+											<input id="bv-input-email" type="email" placeholder="E-mail" v-model="email">
 											<label for="bv-input-email" class="form-item-btn active"><i class="far fa-envelope"></i></label>
 										</div>
 										<div class="form-item">
-											<input id="bv-input-phone" type="tel" placeholder="Phone">
+											<input id="bv-input-phone" type="tel" placeholder="Phone" v-model="phone">
 											<label for="bv-input-phone" class="form-item-btn active"><i class="far fa-phone"></i></label>
 										</div>
 										<div class="form-item rangedate">
-											<input type="text" class="form-control visite" id="visite" placeholder="Date" name="visite">
+											<input type="date" class="form-control datetimepicker hasDatepicker"  data-date-format="yyyy-mm-dd" id="visite" placeholder="Date" name="visite" v-model="date">
 											<label for="visite" class="form-item-btn active"><i class="far fa-calendar"></i></label>
 										</div>
 										<div class="form-textarea">
-											<textarea id="bv-textarea" placeholder="Tell us a bit about yourself and your requirements"></textarea>
+											<textarea id="bv-textarea" placeholder="Tell us a bit about yourself and your requirements" v-model="notes"></textarea>
 											<label for="bv-textarea" class="form-item-btn active"><i class="far fa-edit"></i></label>
 										</div>
 										<div class="text-center">
-											<a href="#!" class="custom-btn">booking now</a>
+											<small  v-if="statusBooking" style="color:green">([messageBooking])</small>
+											<small  v-if="!statusBooking" style="color:red">([messageBooking])</small>
+											<a href="#!" class="custom-btn" @click="addApplicant">booking now</a>
 										</div>
 									   </div>
 
@@ -272,40 +175,44 @@
 									
 								<div class="card">
 								    <div class="card-header" id="headingOne">
-								    	<a href="#!" class="tab-vermelha collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne"><i class="far fa-edit"></i> send an enquiry</a>
+								    	<a href="#!" class="tab-verde collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne"><i class="far fa-edit"></i> send an enquiry</a>
 								    </div>
 
 								    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
 								      <div class="card-body">
+									  <form method="POST" action="{{ url('/send') }}" id="formSend">
+									  <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+
 										<div class="form-item">
-											<input id="se-input-name" type="text" placeholder="First Name">
+											<input id="name" type="text" placeholder="First Name" name="nameMail">
 											<label for="se-input-name" class="form-item-btn active"><i class="far fa-user"></i></label>
 										</div>
 										<div class="form-item">
-											<input id="se-input-lastname" type="text" placeholder="Last Name">
-											<label for="se-input-lastname" class="form-item-btn active"><i class="far fa-user"></i></label>
+											<input id="surname" type="text" placeholder="Last Name" name="surnameMail">
+											<label for="se-input-lastname" class="form-item-btn active"><i class="far fa-user" name="surnameMail" ></i></label>
 										</div>
 										<div class="form-item">
-											<input id="se-input-email" type="email" placeholder="E-mail">
+											<input id="email" type="email" placeholder="E-mail" name="emailMail">
 											<label for="se-input-email" class="form-item-btn active"><i class="far fa-envelope"></i></label>
 										</div>
 										<div class="form-item">
-											<input id="se-input-phone" type="tel" placeholder="Phone">
+											<input id="phone" type="tel" placeholder="Phone" name="phoneMail">
 											<label for="se-input-phone" class="form-item-btn active"><i class="far fa-phone"></i></label>
 										</div>
 										<div class="form-textarea">
-											<textarea id="se-textarea" placeholder="Tell us a bit about yourself and your requirements"></textarea>
+											<textarea id="message-textarea" placeholder="Tell us a bit about yourself and your requirements" name="messageMail"></textarea>
 											<label for="se-textarea" class="form-item-btn active"><i class="far fa-edit"></i></label>
 										</div>
 										<div class="text-center">
-											<a href="#!" class="custom-btn">enquire now</a>
+											<button type="submit" id="sendEmail" class="custom-btn">enquire now</button>
 										</div>
+										</form>
 									   </div>
 
 									</div>
 								</div>	
 
-								<div class="card">
+								<!-- <div class="card">
 								    <div class="card-header" id="headingThree">
 								      <a href="#!" class="tab-verde collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"><i class="far fa-check-square"></i> reserve now</a>
 								    </div>
@@ -337,7 +244,7 @@
 									   </div>
 
 									</div>
-								</div>
+								</div> -->
 
 							</div>
 
@@ -356,7 +263,17 @@
         el: '#arthur',
         data () {
             return {
+				firstName:null,
+				lastName:null,
+				email:null,
+				phone:null,
+				date:null,
+				notes:null,
+				statusBooking:null,
+				messageBooking:null,
+				features:{},
 				property:{},
+				bills:{},
 				units:{data:null},
 				image_urls:null,
 				error:null,
@@ -386,7 +303,6 @@
 				fetch(this.url+'units/'+localStorage.unitId, requestOptions)
 				.then(response => response.text())
 				.then(result => {
-					console.log(JSON.parse(result).data)
 					this.units = JSON.parse(result).data
 				})
 				.catch(error => console.log('error', error));
@@ -404,39 +320,61 @@
 				fetch(this.url+'properties?Property_Type=Mixed', requestOptions)
 				.then(response => response.text())
 				.then(result => {
-					console.log(JSON.parse(result).data.filter(p => p.id == this.units.property_id))
 					this.property = JSON.parse(result).data.filter(p => p.id == this.units.property_id)
+					this.bills = this.property.map(p => p.features.filter(f => f == "Internet" 
+																		|| f == "Electricity"
+																		|| f == "Cable/Satellite"
+																		|| f == "TV Licence"
+																		|| f == "Water Rates"
+																		|| f == "Gas"
+																		|| f == "Fireplace"
+														));
+
+					this.features = this.property.map(p => p.features.filter(f => f != "Internet" 
+																		&& f != "Electricity"
+																		&& f != "Cable/Satellite"
+																		&& f != "TV Licence"
+																		&& f != "Water Rates"
+																		&& f != "Gas"
+																		&& f != "Fireplace"
+																		));	
 				})
 				.catch(error => console.log('error', error));
 			},
-			addViewing(){
+			addApplicant(){
 				let header = {
                 'Authorization':'Bearer '+localStorage.access_token,
-                'X-EntityID': this.entity
+                'X-EntityID': this.entity,
+				"Content-Type": "application/json"
 				}
+				let raw = JSON.stringify(
+					{
+						"title": "Mr",
+						"first_name": this.firstName,
+						"last_name": this.lastName,
+						"date_of_birth": this.date,
+						"email": this.email,
+						"phone_home": this.phone,
+						"applicant_note": this.notes,
+					}
+				);
 				let requestOptions = {
 					method: 'POST',
 					headers: header,
+					body:raw,
 					redirect: 'follow'
 				};
-				let body = {
-					"unit_id": "4",
-					"applicant_id": "13",
-					"viewing_date": "",
-					"viewing_time": "",
-					"offer_amount": "",
-					"offer_frequency": "",
-					"move_in_date": "",
-					"assigned_to_ids": [
-						"1234"
-					],
-					"source": "",
-					"notes": ""
-				}
-				fetch(this.url+'viewings', body,requestOptions)
+				fetch(this.url+'applicants', requestOptions)
 				.then(response => response.text())
 				.then(result => {
-					console.log(result)
+					let response = JSON.parse(result)
+					if(response.status === 200){
+						this.statusBooking = true
+						this.messageBooking = "Booking Successful"
+					}else{
+						this.statusBooking = false
+						this.messageBooking = "Booking Failed. Try again"
+					}
 				})
 				.catch(error => console.log('error', error));
 			}	
