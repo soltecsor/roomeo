@@ -5,7 +5,7 @@
 			<div class="container" id="arthur">
 				<div class="row justify-content-lg-start justify-content-md-center">
 
-					<div class="col-lg-12 col-md-12 col-sm-12">
+					<div class="col-lg-12 col-md-12 col-sm-12" v-if="units != null">
 						<div class="property-title">
 							<div class="row justify-content-lg-between justify-content-md-center">
 
@@ -41,21 +41,25 @@
 					</div>
 
 					<div class="col-lg-8 col-md-10 col-sm-12">
-						<div class="image-carousel-container mb-30">
-							<div id="details-image-carousel" class="details-image-carousel owl-carousel owl-theme owl-loaded owl-drag">
-							<div class="owl-stage-outer">
-								<div class="owl-stage" style="transition: all 1s ease 0s; width: 5390px; transform: translate3d(0px, 0px, 0px);">
-									<div :class="i === 0 ? 'owl-item active center' : 'owl-item cloned'"  v-for="(image,i) in units.image_urls" :key="i">
-										<div class="item">
-											<a :href="image.replace('download','view')" data-toggle="lightbox" data-gallery="property">
-												<img :src="image" alt="roomeo sharing home" class="img-fluid">
-											</a>
+					<div class="image-carousel-container" v-if="units !== null"> 
+							<div id="details-image-carousel" class="owl-carousel owl-theme owl-property owl-loaded owl-drag">
+								<div class="owl-stage-outer" v-if="units.image_urls.length > 0">	
+								<div class="owl-stage" style="transform: translate3d(-739px, 0px, 0px); transition: all 0.25s ease 0s; width: 2590px;">
+										<div :class="i === 0 ? 'owl-item active' : 'owl-item'" style="width: 370px;" v-for="(image,i) of units.image_urls" :key="i">
+											<div class="item">
+												<a :href="image.replace('download','view')" data-toggle="lightbox" data-gallery="property">
+													<img v-show="image != ''" :src="image.replace('download','view')" alt="roomeo home sharing" class="img-fluid">
+												</a>
+											</div>
+										</div>
 									</div>
+
 								</div>
+								<div class="owl-nav"><button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button></div>
+								<div class="owl-dots"><button role="button" class="owl-dot active"><span></span></button><button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot"><span></span></button></div>
 							</div>
-						</div><div class="owl-nav"><button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button></div><div class="owl-dots"><button role="button" class="owl-dot active"><span></span></button><button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot"><span></span></button></div></div> 
-						</div>
-						<div class="mb-30">
+						</div> 
+						<div class="mb-30" v-if="units != null">
 							<p>([units.description]) </p>
 						</div>
 						<div class="ul-li-block mb-70 clearfix">
@@ -71,7 +75,7 @@
 								</li>
 							</ul>
 						</div>
-						<div class="more-features ul-li-block mb-70 clearfix">
+						<div class="more-features ul-li-block mb-70 clearfix" v-if="units != null">
 							<h3 class="area-title">Property Features</h3>
 							<ul class="clearfix" v-if="property.length > 0">
 								<li v-for="(feature,i) in features[0]" :key="i">
@@ -82,7 +86,7 @@
 								</li>
 							</ul>
 						</div>
-						<div class="more-features ul-li-block mb-70 clearfix">
+						<div class="more-features ul-li-block mb-70 clearfix" v-if="units != null">
 							<h3 class="area-title">Your Bedroom</h3>
 							<ul class="clearfix">
 								<li v-for="(feature,i) in units.features" :key="i">
@@ -102,7 +106,7 @@
 						    <a class="custom-btn-bordered " id="video-tab" data-toggle="tab" href="#video" role="tab" aria-controls="video" aria-selected="false">Video</a>
 						  </li>
 						</ul>
-						<div class="tab-content" id="myTabContent">
+						<div class="tab-content" id="myTabContent" v-if="units != null">
 						  <div v-for="(plan, i) in units.floor_plan_urls" :key="i" class="tab-pane fade show active" id="floorplan" role="tabpanel" aria-labelledby="floorplan-tab">
 						  	<img v-if="plan != ''" :src="plan" alt="planta temporária" class="img-planta">
 						  </div>
@@ -116,7 +120,7 @@
 					<div class="col-lg-4 col-md-10 col-sm-12">
 						<aside id="sidebar-section" class="sidebar-section clearfix">
 
-							<div class="widget widget_categories ul-li-block clearfix">
+							<div class="widget widget_categories ul-li-block clearfix" v-if="units != null">
 								<h2 class="widget_title mb-30 text-center">£ ([units.portal_market_rent/4]) per week</h2>
 								<hr>
 								<ul class="clearfix">
@@ -182,7 +186,8 @@
 								      <div class="card-body">
 									  <form method="POST" action="{{ url('/send') }}" id="formSend">
 									  <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-
+									  <input type="hidden" name="unitRef" :value="unitRef">
+	
 										<div class="form-item">
 											<input id="name" type="text" placeholder="First Name" name="nameMail">
 											<label for="se-input-name" class="form-item-btn active"><i class="far fa-user"></i></label>
@@ -204,6 +209,7 @@
 											<label for="se-textarea" class="form-item-btn active"><i class="far fa-edit"></i></label>
 										</div>
 										<div class="text-center">
+											<small  v-if="validateBooking" style="color:red">All fields are required</small>
 											<button type="submit" id="sendEmail" class="custom-btn">enquire now</button>
 										</div>
 										</form>
@@ -271,10 +277,12 @@
 				notes:null,
 				statusBooking:null,
 				messageBooking:null,
+				unitRef:null,
+				validateBooking:null,
 				features:{},
 				property:{},
 				bills:{},
-				units:{data:null},
+				units:null,
 				image_urls:null,
 				error:null,
 				url:'https://api.arthuronline.co.uk/v2/',
@@ -304,6 +312,8 @@
 				.then(response => response.text())
 				.then(result => {
 					this.units = JSON.parse(result).data
+					this.unitRef = this.units.unit_ref
+					console.log(this.units)
 				})
 				.catch(error => console.log('error', error));
 			},
@@ -342,7 +352,12 @@
 				.catch(error => console.log('error', error));
 			},
 			addApplicant(){
-				let header = {
+				this.statusBooking = null
+				if(!this.firstName || !this.lastName || !this.date || !this.email || !this.phone){
+					this.statusBooking = false
+					this.messageBooking = "All fields are required"
+				}else{
+					let header = {
                 'Authorization':'Bearer '+localStorage.access_token,
                 'X-EntityID': this.entity,
 				"Content-Type": "application/json"
@@ -371,12 +386,20 @@
 					if(response.status === 200){
 						this.statusBooking = true
 						this.messageBooking = "Booking Successful"
+						this.firstName = '' 
+						this.lastName = '' 
+						this.date = '' 
+						this.email = '' 
+						this.phone = ''
+						this.notes = ''
 					}else{
 						this.statusBooking = false
 						this.messageBooking = "Booking Failed. Try again"
 					}
 				})
 				.catch(error => console.log('error', error));
+				}
+
 			}	
 		}
     })

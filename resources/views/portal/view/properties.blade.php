@@ -2,20 +2,20 @@
 	<div class="container" id="property-destaques">
 	<div class="section-title mb-30 text-center">
 			<span class="small-title"></span>
-			<h2 class="big-title mb-0">Recently Added Rooms</h2>
+			<h2 class="big-title mb-0">([unitsTitle])</h2>
 			<small v-if="units.data == null || units.data.length == 0" style="font-size:22px;line-height:50px;text-transform:uppercase;color:#05b59d;">Rooms not found in your search</small>
 		</div>        
 		<div class="row property-destaques">
 			<div class="col-lg-4 col-md-6 col-sm-12" v-for="(unit,index) of units.data" :key="index">
 				<div class="property-grid-item">
 					<div class="property-image image-container">
-						<div class="post-admin" v-show="unit.unit_status == 'Available To Let'">
+						<div class="post-admin" v-if="unit.tags.filter(a => a == 'Available Now').length > 0">
 							<a class="admin-link" href="#!">
 								Available Now
 							</a>
 						</div>
 						<div class="item-label ul-li-right clearfix">
-							<ul class="clearfix">
+							<ul class="clearfix" v-if="unit.tags.filter(c => c == 'checked').length > 0">
 								<li class="bg-default-checked"><a href="#!">checked</a></li>
 							</ul>
 						</div>
@@ -84,11 +84,10 @@
         el: '#arthur',
         data () {
             return {
+				unitsTitle:'Recently Added Rooms',
 				units:{data:null},
 				image_urls:null,
 				error:null,
-				// access_token:"c4f245ae77947eb7364d9112b1e612d4d2fa2d33c66980867f57a4c616ed3347",
-				// refresh_token:"bfee562b151b4ba8fe2c4f0c4babab7c9008bc7f79932091437bae55ee064087",
 				url:'https://api.arthuronline.co.uk/v2/',
 				urlRefresh:' https://auth.arthuronline.co.uk/',
 				grant_type:'refresh_token',
@@ -99,9 +98,7 @@
 			}
         },
 		created(){
-			//localStorage.clear()
-			//localStorage.access_token ='10a44a0886e3eea8f63ab24ec5f9748649e24a3f444a38a1c5911eb56359c3a6'
-			//localStorage.refresh_token ='51340ab8193bc9509f6f974dfeee3bab77be7e47e44079f77de5b34832230dc7'
+
 		},
         mounted () {	
 		   this.getUnits()
@@ -127,18 +124,24 @@
 					//let dateTo = localStorage.dateTo
 					let dateFrom = localStorage.dateFrom
 					this.units = JSON.parse(result)
+					console.log(this.units.data)
+					let comboArea = this.units.data.map(f => f.area)
+					localStorage.setItem('filterArea', JSON.stringify(comboArea.filter((item,index) => comboArea.indexOf(item) == index)))
 					if(area !== undefined){
+						this.unitsTitle = 'Search Results'
 						area = area.replace(/^./,area[0].toUpperCase());
 						this.units.data = this.units.data.filter(f => f.area == area)
 						document.getElementById('property-destaques').scrollIntoView();
 					}
 
 					if(budgetMax !== undefined  && budgetMin === undefined){
+						this.unitsTitle = 'Search Results'
 						budgetMin = 0
 						this.units.data = this.units.data.filter(f => f.market_rent >= budgetMin && f.market_rent <= budgetMax)
 						document.getElementById('property-destaques').scrollIntoView();
 
 					}else if(budgetMax !== undefined  && budgetMin !== undefined){
+						this.unitsTitle = 'Search Results'
 						this.units.data = this.units.data.filter(f => f.market_rent >= budgetMin && f.market_rent <= budgetMax)
 						document.getElementById('property-destaques').scrollIntoView();
 					}
@@ -181,7 +184,7 @@
 					data = JSON.parse(result)
 					localStorage.access_token = data.access_token;
 					localStorage.refresh_token = data.refresh_token
-					console.log('@@@@',data)
+					//console.log('@@@@',data)
 					}
 				)
 				.catch(error => console.log('error', error));

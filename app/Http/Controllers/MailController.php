@@ -20,12 +20,19 @@ class MailController extends Controller
         $objRoomeo->message = $request->messageMail;
         $objRoomeo->sender = $objRoomeo->name;
         $objRoomeo->receiver = 'Roomeo Limited';
+        $objRoomeo->unitRef = $request->unitRef;
 
-        if(!$objRoomeo->name || !$objRoomeo->surname || !$objRoomeo->email || !$objRoomeo->phone || !$objRoomeo->message){
+
+        if(!$objRoomeo->name || !$objRoomeo->surname || !$objRoomeo->email || !$objRoomeo->phone || !$objRoomeo->message && !$objRoomeo->unitRef){
             return redirect(url('/contact'));
         }else{
             Mail::to("ftmuffo@gmail.com")->send(new ContactMail($objRoomeo));
-            return redirect('/contact')->with('emailsent', 'Thank you! E-mail sent successful');
+            if(!$objRoomeo->unitRef){
+                return redirect('/contact')->with('emailsent', 'Thank you! E-mail sent successful');
+
+            }else{
+                return redirect('/room-details')->with('emailsent', 'Thank you! E-mail sent successful');
+            }
         }
 
     }

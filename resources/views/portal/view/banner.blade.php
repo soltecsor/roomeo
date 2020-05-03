@@ -18,7 +18,10 @@
 									<ul class="nav-busca clearfix">
 										<li>
 											<div class="form-item mb-0">
-												<input id="location-input" type="search" placeholder="Location">
+												<select id="location-input">
+													<option>Location</option>
+												</select>
+												<!-- <input id="location-input" type="search" placeholder="Location"> -->
 												<label for="location-input" class="form-item-btn"><i class="fal fa-location"></i></label>
 											</div>
 										</li>
@@ -114,13 +117,34 @@
 			}
 		});
 	})
+	
 
 	function filter(){
 		window.location.reload(false);
 	}
 	$(function(){
-		
+		$('.form-item').css('height','50px')
+		$('.nice-select').css('border','none')
+		$('.nice-select').css('line-height','50px')
+		$('.custom-btn').css('height','50px')
+		$('.custom-btn').css('line-height','50px')
 
+		$('.list').append('<li class="optionSelected">All London</li>')
+		let filterArea = JSON.parse(localStorage.getItem('filterArea'))
+		for(let i=0;i<=filterArea.length;i++){
+			if(filterArea[i] !== undefined){
+				$('.list').append('<li class="optionSelected">'+filterArea[i]+'</li>')
+			}
+		}
+		$('.optionSelected').on('click', function(){
+			if($(this).text() === 'All London'){
+				window.location.reload()
+			}else{
+				localStorage.setItem('location',$(this).text())
+				window.location.reload()
+			}
+			
+		})
 	})
 
 </script>
