@@ -98,9 +98,9 @@
 	$('.max').on('change', function(){
 		localStorage.setItem('rangeMax',$(this).val())
 	})
-	$('#location-input').on('change', function(){
-		localStorage.setItem('location',$(this).val())
-	})
+	// $('#location-input').on('change', function(){
+	// 	localStorage.setItem('location',$(this).val())
+	//})
 	$('#to').on('click', function(){
 		$(this).datepicker({
 			dateFormat: 'yy-mm-dd',
@@ -117,23 +117,36 @@
 			}
 		});
 	})
-	
+// 	$('.type-select-form').click(function(e) {
+//     e.stopPropagation();
+//     $('.nice-select').toggleClass('open');
+//     $('.bloco-busca').removeClass('show');
+//     if($(window).width() < 768) { $(this).find('.toggle-sm').show(); }
+//     $(this).parent().find('.bloco-busca').toggleClass('show');
+//   });  
 
+//   $('.toggle-sm').click(function(e) {
+//     e.stopPropagation();
+//     $(this).hide();
+//     $('.nice-select').removeClass('open');
+//     $('.bloco-busca').removeClass('show');
+//   }); 
 	function filter(){
 		window.location.reload(false);
 	}
-	$(function(){
+	$(function(){	
 		$('.form-item').css('height','50px')
 		$('.nice-select').css('border','none')
 		$('.nice-select').css('line-height','50px')
 		$('.custom-btn').css('height','50px')
 		$('.custom-btn').css('line-height','50px')
-
-		$('.list').append('<li class="optionSelected">All London</li>')
+		$('.list:first').addClass('combolist')
+		$('.combolist').css('margin-top','-10px')
+		$('.combolist').append('<li class="optionSelected">All London</li>')
 		let filterArea = JSON.parse(localStorage.getItem('filterArea'))
 		for(let i=0;i<=filterArea.length;i++){
 			if(filterArea[i] !== undefined){
-				$('.list').append('<li class="optionSelected">'+filterArea[i]+'</li>')
+				$('.list:first').append('<li class="optionSelected">'+filterArea[i]+'</li>')
 			}
 		}
 		$('.optionSelected').on('click', function(){
@@ -145,6 +158,17 @@
 			}
 			
 		})
+
+		$('.current').on('click',function(){
+			let link = $(this).html()
+
+			if(link === 'Location'){
+				$('.combolist').css('visibility','')
+				$('.show').css('visibility','hidden')
+			}else{
+				$('.show').css('visibility','')
+			}
+		})	
 	})
 
 </script>

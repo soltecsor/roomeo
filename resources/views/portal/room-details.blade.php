@@ -45,7 +45,7 @@
 							<div id="details-image-carousel" class="owl-carousel owl-theme owl-property owl-loaded owl-drag">
 								<div class="owl-stage-outer" v-if="units.image_urls.length > 0">	
 								<div class="owl-stage" style="transform: translate3d(-739px, 0px, 0px); transition: all 0.25s ease 0s; width: 2590px;">
-										<div :class="i === 0 ? 'owl-item active' : 'owl-item'" style="width: 370px;" v-for="(image,i) of units.image_urls" :key="i">
+										<div :class="i === 0 ? 'owl-item active' : 'owl-item'" style="width: 370px;" v-for="(image,i) of units.image_urls.concat(property[0].image_urls)" :key="i">
 											<div class="item">
 												<a :href="image.replace('download','view')" data-toggle="lightbox" data-gallery="property">
 													<img v-show="image != ''" :src="image.replace('download','view')" alt="roomeo home sharing" class="img-fluid">
@@ -280,7 +280,9 @@
 				unitRef:null,
 				validateBooking:null,
 				features:{},
-				property:{},
+				property:[
+					{image_urls:'http://roomeo.co.uk/assets/images/slider/slide1.jpg'}
+				],
 				bills:{},
 				units:null,
 				image_urls:null,
@@ -290,7 +292,7 @@
 				grant_type:'refresh_token',
 				client_id:'c163687de105827e9c35765fadd4b5fc6c356ae6c60f4d1fd608bf10d7c0307e',
 				client_secret:'db031ae061087a44424da28ed015c714c3c8824147984f6896730c3a5ac77b32',
-				entity:'82013'
+				entity:'82013',
             }
         },
         mounted () {	
@@ -331,6 +333,7 @@
 				.then(response => response.text())
 				.then(result => {
 					this.property = JSON.parse(result).data.filter(p => p.id == this.units.property_id)
+					console.log(this.property)
 					this.bills = this.property.map(p => p.features.filter(f => f == "Internet" 
 																		|| f == "Electricity"
 																		|| f == "Cable/Satellite"

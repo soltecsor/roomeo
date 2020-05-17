@@ -138,6 +138,7 @@ setTimeout(()=>{
 
 
  $('.type-select-form').click(function(e) {
+  $('.combolist').css('visibility','hidden')
     e.stopPropagation();
     $('.nice-select').toggleClass('open');
     $('.bloco-busca').removeClass('show');

@@ -2,12 +2,12 @@
 	<div class="container" id="property-destaques">
 	<div class="section-title mb-30 text-center">
 			<span class="small-title"></span>
-			<h2 class="big-title mb-0">([unitsTitle])</h2>
+			<h2 class="big-title mb-0">Search Results</h2>
 			<small v-if="units.data == null || units.data.length == 0" style="font-size:22px;line-height:50px;text-transform:uppercase;color:#05b59d;">Rooms not found in your search</small>
 		</div>        
 		<div class="row property-destaques">
-			<div class="col-lg-4 col-md-6 col-sm-12" v-for="(unit,index) of units.data" :key="index">
-				<div class="property-grid-item" v-if="index <= 5">
+			<div class="col-lg-4 col-md-6 col-sm-12" v-for="(unit,index) of units" :key="index">
+				<div class="property-grid-item">
 					<div class="property-image image-container">
 						<div class="post-admin" v-if="unit.tags.filter(a => a == 'Available Now').length > 0">
 							<a class="admin-link" href="#!">
@@ -98,102 +98,97 @@
 			}
         },
 		created(){
-
+			this.units = JSON.parse(localStorage.unitResults)
 		},
         mounted () {	
-		   this.getUnits()
-		   this.refreshToken()
+		   //this.getUnits()
+		   //this.refreshToken()
         },
 		methods: {
-			getUnits(){
-				let header = {
-                'Authorization':'Bearer '+localStorage.access_token,
-                'X-EntityID': this.entity
-				}
-				let requestOptions = {
-					method: 'GET',
-					headers: header,
-					redirect: 'follow'
-				};
-				fetch(this.url+'units', requestOptions)
-				.then(response => response.text())
-				.then(result => {
-					let area = localStorage.location 
-					let budgetMin = localStorage.rangeMin
-					let budgetMax = localStorage.rangeMax
-					//let dateTo = localStorage.dateTo
-					let dateFrom = localStorage.dateFrom
-					this.units = JSON.parse(result)
-					console.log(this.units.data)
-					let comboArea = this.units.data.map(f => f.area)
-					localStorage.setItem('filterArea', JSON.stringify(comboArea.filter((item,index) => comboArea.indexOf(item) == index)))
-					if(area !== undefined){
-						//this.unitsTitle = 'Search Results'
-						area = area.replace(/^./,area[0].toUpperCase());
-						localStorage.unitResults = JSON.stringify(this.units.data.filter(f => f.area == area))
-						//this.units.data = this.units.data.filter(f => f.area == area)
-						//document.getElementById('property-destaques').scrollIntoView();
-						window.location.replace("/roomeo/room-search")
-					}
+			// getUnits(){
+			// 	let header = {
+            //     'Authorization':'Bearer '+localStorage.access_token,
+            //     'X-EntityID': this.entity
+			// 	}
+			// 	let requestOptions = {
+			// 		method: 'GET',
+			// 		headers: header,
+			// 		redirect: 'follow'
+			// 	};
+			// 	fetch(this.url+'units', requestOptions)
+			// 	.then(response => response.text())
+			// 	.then(result => {
+			// 		let area = localStorage.location 
+			// 		let budgetMin = localStorage.rangeMin
+			// 		let budgetMax = localStorage.rangeMax
+			// 		//let dateTo = localStorage.dateTo
+			// 		let dateFrom = localStorage.dateFrom
+			// 		this.units = JSON.parse(result)
 
-					if(budgetMax !== undefined  && budgetMin === undefined){
-						//this.unitsTitle = 'Search Results'
-						budgetMin = 0
-						localStorage.unitResults = JSON.stringify(this.units.data.filter(f => f.market_rent >= budgetMin && f.market_rent <= budgetMax))
-						//this.units.data = this.units.data.filter(f => f.market_rent >= budgetMin && f.market_rent <= budgetMax)
-						//document.getElementById('property-destaques').scrollIntoView();
+			// 		let comboArea = this.units.data.map(f => f.area)
+			// 		localStorage.setItem('filterArea', JSON.stringify(comboArea.filter((item,index) => comboArea.indexOf(item) == index)))
+			// 		if(area !== undefined){
+			// 			this.unitsTitle = 'Search Results'
+			// 			area = area.replace(/^./,area[0].toUpperCase());
+			// 			this.units.data = this.units.data.filter(f => f.area == area)
+			// 			document.getElementById('property-destaques').scrollIntoView();
+			// 		}
 
-					}else if(budgetMax !== undefined  && budgetMin !== undefined){
-						//this.unitsTitle = 'Search Results'
-						localStorage.unitResults = JSON.stringify(this.units.data.filter(f => f.market_rent >= budgetMin && f.market_rent <= budgetMax))
-						//this.units.data = this.units.data.filter(f => f.market_rent >= budgetMin && f.market_rent <= budgetMax)
-						//document.getElementById('property-destaques').scrollIntoView();
-					}
+			// 		if(budgetMax !== undefined  && budgetMin === undefined){
+			// 			this.unitsTitle = 'Search Results'
+			// 			budgetMin = 0
+			// 			this.units.data = this.units.data.filter(f => f.market_rent >= budgetMin && f.market_rent <= budgetMax)
+			// 			document.getElementById('property-destaques').scrollIntoView();
 
-					if(dateFrom !== undefined){
-						let checkin = new Date(dateFrom)
-						//this.units.data = this.units.data.filter(f => new Date(f.available_from) >= checkin)
-						localStorage.unitResults = JSON.stringify(this.units.data.filter(f => new Date(f.available_from) >= checkin))
-					}
+			// 		}else if(budgetMax !== undefined  && budgetMin !== undefined){
+			// 			this.unitsTitle = 'Search Results'
+			// 			this.units.data = this.units.data.filter(f => f.market_rent >= budgetMin && f.market_rent <= budgetMax)
+			// 			document.getElementById('property-destaques').scrollIntoView();
+			// 		}
 
-					localStorage.removeItem('location')
-					localStorage.removeItem('rangeMin')
-					localStorage.removeItem('rangeMax')
-					localStorage.removeItem('dateFrom')
+			// 		if(dateFrom !== undefined){
+			// 			let checkin = new Date(dateFrom)
+			// 			this.units.data = this.units.data.filter(f => new Date(f.available_from) >= checkin)
+			// 		}
 
-				})
-				.catch(error => console.log('error', error));
-			},
-			refreshToken(){
+			// 		localStorage.removeItem('location')
+			// 		localStorage.removeItem('rangeMin')
+			// 		localStorage.removeItem('rangeMax')
+			// 		localStorage.removeItem('dateFrom')
+
+			// 	})
+			// 	.catch(error => console.log('error', error));
+			// },
+			// refreshToken(){
 				
-				let myHeaders = new Headers();
-				myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
-				myHeaders.append("Authorization", "Bearer "+localStorage.access_token);
+			// 	let myHeaders = new Headers();
+			// 	myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+			// 	myHeaders.append("Authorization", "Bearer "+localStorage.access_token);
 
-				let urlencoded = new URLSearchParams();
-				urlencoded.append("grant_type", this.grant_type);
-				urlencoded.append("client_id", this.client_id);
-				urlencoded.append("client_secret", this.client_secret);
-				urlencoded.append("refresh_token", localStorage.refresh_token);
+			// 	let urlencoded = new URLSearchParams();
+			// 	urlencoded.append("grant_type", this.grant_type);
+			// 	urlencoded.append("client_id", this.client_id);
+			// 	urlencoded.append("client_secret", this.client_secret);
+			// 	urlencoded.append("refresh_token", localStorage.refresh_token);
 
-				let requestOptions = {
-				method: 'POST',
-				headers: myHeaders,
-				body: urlencoded,
-				redirect: 'follow'
-				};
+			// 	let requestOptions = {
+			// 	method: 'POST',
+			// 	headers: myHeaders,
+			// 	body: urlencoded,
+			// 	redirect: 'follow'
+			// 	};
 
-				fetch(this.urlRefresh+"oauth/token", requestOptions)
-				.then(response => response.text())
-				.then(result => { 
-					data = JSON.parse(result)
-					localStorage.access_token = data.access_token;
-					localStorage.refresh_token = data.refresh_token
-					//console.log('@@@@',data)
-					}
-				)
-				.catch(error => console.log('error', error));
-			},
+			// 	fetch(this.urlRefresh+"oauth/token", requestOptions)
+			// 	.then(response => response.text())
+			// 	.then(result => { 
+			// 		data = JSON.parse(result)
+			// 		localStorage.access_token = data.access_token;
+			// 		localStorage.refresh_token = data.refresh_token
+			// 		//console.log('@@@@',data)
+			// 		}
+			// 	)
+			// 	.catch(error => console.log('error', error));
+			// },
 			getDate(unit){
 				let date = new Date(unit)
 				let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September","October", "November", "December"]

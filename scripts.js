@@ -69,7 +69,7 @@
 
 
 
-  $('select').niceSelect();
+  //$('select').niceSelect();
 
   /* isto pode ser melhorado após implementação do sistema */
   $('#from').datetimepicker({
@@ -130,18 +130,19 @@
 
 
  $('.type-select-form').click(function(e) {
-    e.stopPropagation();
-    $('.nice-select').toggleClass('open');
-    $('.bloco-busca').removeClass('show');
-    if($(window).width() < 768) { $(this).find('.toggle-sm').show(); }
-    $(this).parent().find('.bloco-busca').toggleClass('show');
+   
+    //e.stopPropagation();
+    // $('.nice-select').toggleClass('open');
+    // $('.bloco-busca').removeClass('show');
+    // if($(window).width() < 768) { $(this).find('.toggle-sm').show(); }
+    // $(this).parent().find('.bloco-busca').toggleClass('show');
   });  
 
   $('.toggle-sm').click(function(e) {
-    e.stopPropagation();
-    $(this).hide();
-    $('.nice-select').removeClass('open');
-    $('.bloco-busca').removeClass('show');
+    //e.stopPropagation();
+    // $(this).hide();
+    // $('.nice-select').removeClass('open');
+    // $('.bloco-busca').removeClass('show');
   }); 
 
   $('.min').change(function(){

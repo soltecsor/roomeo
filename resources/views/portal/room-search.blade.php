@@ -58,6 +58,6 @@
 	})
 
 </script>
-		@include('portal.view.properties')
+		@include('portal.view.properties-search')
 		@include('portal.view.partners')
 @endsection
