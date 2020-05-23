@@ -1,9 +1,25 @@
+<section id="counter-section" class="counter-section counter-landlord sec-ptb-120 pt-0 clearfix">
+	<div class="secondary-counter">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-10 col-md-10 col-sm-12 offset-md-1">
+					<div class="counter-item text-center" style="border-radius:8px;height:220px;">
+						<h3 class="counter-text">Hi Tenants</h3>
+							<span style="font-size:16px;color:#001238;font-weight:bold;">We can help you find the perfect room exactly like you're looking for. Click below!.</span>
+							<div>
+								<a class="custom-btn" style="height: 50px; line-height: 40px;margin-top:20px;">Find my room</a>
+							</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
 <section class="property-section sec-ptb-0 clearfix" id="arthur">
 	<div class="container" id="property-destaques">
 	<div class="section-title mb-30 text-center">
 			<span class="small-title"></span>
 			<h2 class="big-title mb-0">([unitsTitle])</h2>
-			<small v-if="units.data == null || units.data.length == 0" style="font-size:22px;line-height:50px;text-transform:uppercase;color:#05b59d;">Rooms not found in your search</small>
 		</div>        
 		<div class="row property-destaques">
 			<div class="col-lg-4 col-md-6 col-sm-12" v-for="(unit,index) of units.data" :key="index">
@@ -98,6 +114,7 @@
 			}
         },
 		created(){
+			
 
 		},
         mounted () {	
@@ -124,42 +141,43 @@
 					//let dateTo = localStorage.dateTo
 					let dateFrom = localStorage.dateFrom
 					this.units = JSON.parse(result)
-					console.log(this.units.data)
+					console.log(this.units)
+					localStorage.unitResults  = JSON.stringify(this.units.data)
 					let comboArea = this.units.data.map(f => f.area)
 					localStorage.setItem('filterArea', JSON.stringify(comboArea.filter((item,index) => comboArea.indexOf(item) == index)))
 					if(area !== undefined){
-						//this.unitsTitle = 'Search Results'
 						area = area.replace(/^./,area[0].toUpperCase());
 						localStorage.unitResults = JSON.stringify(this.units.data.filter(f => f.area == area))
-						//this.units.data = this.units.data.filter(f => f.area == area)
 						//document.getElementById('property-destaques').scrollIntoView();
 						window.location.replace("/roomeo/room-search")
+					}else if(area = "all london"  && localStorage.href !== 'http://localhost:8001/roomeo/room-search'){
+						//window.location.replace("/roomeo/room-search")
 					}
 
 					if(budgetMax !== undefined  && budgetMin === undefined){
-						//this.unitsTitle = 'Search Results'
 						budgetMin = 0
 						localStorage.unitResults = JSON.stringify(this.units.data.filter(f => f.market_rent >= budgetMin && f.market_rent <= budgetMax))
-						//this.units.data = this.units.data.filter(f => f.market_rent >= budgetMin && f.market_rent <= budgetMax)
-						//document.getElementById('property-destaques').scrollIntoView();
-
+						if(localStorage.href !== 'http://localhost:8001/roomeo/room-search')
+						window.location.replace("/roomeo/room-search")
 					}else if(budgetMax !== undefined  && budgetMin !== undefined){
-						//this.unitsTitle = 'Search Results'
 						localStorage.unitResults = JSON.stringify(this.units.data.filter(f => f.market_rent >= budgetMin && f.market_rent <= budgetMax))
-						//this.units.data = this.units.data.filter(f => f.market_rent >= budgetMin && f.market_rent <= budgetMax)
-						//document.getElementById('property-destaques').scrollIntoView();
+						if(localStorage.href !== 'http://localhost:8001/roomeo/room-search')
+						window.location.replace("/roomeo/room-search")
 					}
 
 					if(dateFrom !== undefined){
 						let checkin = new Date(dateFrom)
-						//this.units.data = this.units.data.filter(f => new Date(f.available_from) >= checkin)
-						localStorage.unitResults = JSON.stringify(this.units.data.filter(f => new Date(f.available_from) >= checkin))
+						//console.log('####',this.units.data.filter(f =>  moment(checkin).diff(f.available_from, 'days')))
+						localStorage.unitResults = JSON.stringify(this.units.data.filter(f =>  moment(checkin).diff(f.available_from, 'days') <= 0))
+						if(localStorage.href !== 'http://localhost:8001/roomeo/room-search')
+						window.location.replace("/roomeo/room-search")
 					}
-
+					
 					localStorage.removeItem('location')
 					localStorage.removeItem('rangeMin')
 					localStorage.removeItem('rangeMax')
 					localStorage.removeItem('dateFrom')
+					localStorage.removeItem('href')
 
 				})
 				.catch(error => console.log('error', error));
@@ -187,9 +205,9 @@
 				.then(response => response.text())
 				.then(result => { 
 					data = JSON.parse(result)
+					console.log('@@@',data)
 					localStorage.access_token = data.access_token;
 					localStorage.refresh_token = data.refresh_token
-					//console.log('@@@@',data)
 					}
 				)
 				.catch(error => console.log('error', error));
@@ -206,6 +224,12 @@
 			roomDetail(unitId){
 				localStorage.unitId = unitId
 			}
+		},destroyed(){
+			localStorage.removeItem('location')
+			localStorage.removeItem('unitResults')
+			localStorage.removeItem('rangeMin')
+			localStorage.removeItem('rangeMax')
+			localStorage.removeItem('dateFrom')
 		}
 	})
 	

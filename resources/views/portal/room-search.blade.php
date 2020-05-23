@@ -8,7 +8,7 @@
 
 				<div class="col-lg-12 col-md-12 col-sm-12">
 					<div class="section-title text-center">
-						<span class="small-title">Hello</span>
+						<span class="small-title"></span>
 						<h4 class="big-title mb-0">What you need?</h4>
 					</div>
 				</div>
@@ -21,7 +21,9 @@
 
 			</div>
 		</section>
-		<script type="application/javascript">
+		@include('portal.view.properties-search')
+		@include('portal.view.partners')
+	<script type="application/javascript">
 
 	$('.min').on('change', function(){
 		localStorage.setItem('rangeMin',$(this).val())
@@ -58,6 +60,5 @@
 	})
 
 </script>
-		@include('portal.view.properties-search')
-		@include('portal.view.partners')
+		
 @endsection

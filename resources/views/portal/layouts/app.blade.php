@@ -17,6 +17,7 @@
   		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
 		<link rel="stylesheet" type="text/css" href="{{ asset('public/portal/assets/css/style.min.css')}}">
         <script src="public/portal/assets/js/jquery-3.4.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.0/moment.min.js"></script>
         <script src="{{asset('public/js/vue.js')}}"></script>
         <!-- <script src="{{asset('public/js/axios.js')}}"></script> -->
 

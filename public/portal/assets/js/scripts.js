@@ -248,17 +248,26 @@ setTimeout(()=>{
   
   $('[data-toggle="tooltip"]').tooltip();
 
-   $('#busca-lista').click(function() {
-
+   $('#busca-lista').click(function(e) {
+      e.preventDefault()
       $('#property-section').removeClass('hidden');
 
       setTimeout(function() {
         $('html, body').animate({ 
-          scrollTop: $($(this).attr('href')).offset().top + 360
+          //scrollTop: $($(this).attr('href')).offset().top + 360
+          //scrollTop:$('.nav-link active').offset().top + 360
         }, 500);
       }, 100);
    });
 
+    $('#btlayoutgrid').click(function(e){
+      e.preventDefault()
+      //$('#layout-grid').addClass('hidden');
+    })
+    $('#btlayoutlist').click(function(e){
+      e.preventDefault()
+      //$('#layout-list').addClass('hidden');
+    })
   
   // testimonial-carousel - start
   // --------------------------------------------------

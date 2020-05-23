@@ -98,9 +98,7 @@
 	$('.max').on('change', function(){
 		localStorage.setItem('rangeMax',$(this).val())
 	})
-	// $('#location-input').on('change', function(){
-	// 	localStorage.setItem('location',$(this).val())
-	//})
+
 	$('#to').on('click', function(){
 		$(this).datepicker({
 			dateFormat: 'yy-mm-dd',
@@ -117,20 +115,7 @@
 			}
 		});
 	})
-// 	$('.type-select-form').click(function(e) {
-//     e.stopPropagation();
-//     $('.nice-select').toggleClass('open');
-//     $('.bloco-busca').removeClass('show');
-//     if($(window).width() < 768) { $(this).find('.toggle-sm').show(); }
-//     $(this).parent().find('.bloco-busca').toggleClass('show');
-//   });  
 
-//   $('.toggle-sm').click(function(e) {
-//     e.stopPropagation();
-//     $(this).hide();
-//     $('.nice-select').removeClass('open');
-//     $('.bloco-busca').removeClass('show');
-//   }); 
 	function filter(){
 		window.location.reload(false);
 	}
