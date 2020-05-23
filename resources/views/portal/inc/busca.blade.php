@@ -37,7 +37,7 @@
 						<a class="toggle-sm"><i class="fas fa-times"></i></a>
 					</div>
 					<div class="bloco-busca">
-						<div class="rangedate">
+						<div class="rangedate" style="margin-bottom:20px;">
 							<h5>Choose your check-in date</h5>
 							<span>
 								<label for="from">
@@ -47,11 +47,12 @@
 								</label>														
 							</span>
 						</div>
+						<button class="form-control" style="width:50%;position:relative;margin:auto">Anytime</button>
 					</div>
 				</li>
-				<!-- <li>
-					<a class="custom-btn" onClick="filter()" href="#property-section" id="busca-lista"><i class="far fa-search"></i> Find Rooms</a>
-				</li> -->
+				<li>
+					<a class="custom-btn" onClick="filter()"><i class="far fa-search"></i> Find Rooms</a>
+				</li>
 			</ul>
 		</div>
 	</form>

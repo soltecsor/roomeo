@@ -141,13 +141,10 @@
 					//let dateTo = localStorage.dateTo
 					let dateFrom = localStorage.dateFrom
 					this.units = JSON.parse(result)
-					console.log(this.units)
-					localStorage.unitResults  = JSON.stringify(this.units.data)
 					let comboArea = this.units.data.map(f => f.area)
 					localStorage.setItem('filterArea', JSON.stringify(comboArea.filter((item,index) => comboArea.indexOf(item) == index)))
 					if(area !== undefined){
 						area = area.replace(/^./,area[0].toUpperCase());
-						localStorage.unitResults = JSON.stringify(this.units.data.filter(f => f.area == area))
 						//document.getElementById('property-destaques').scrollIntoView();
 						window.location.replace("/roomeo/room-search")
 					}else if(area = "all london"  && localStorage.href !== 'http://localhost:8001/roomeo/room-search'){
@@ -156,28 +153,18 @@
 
 					if(budgetMax !== undefined  && budgetMin === undefined){
 						budgetMin = 0
-						localStorage.unitResults = JSON.stringify(this.units.data.filter(f => f.market_rent >= budgetMin && f.market_rent <= budgetMax))
 						if(localStorage.href !== 'http://localhost:8001/roomeo/room-search')
 						window.location.replace("/roomeo/room-search")
 					}else if(budgetMax !== undefined  && budgetMin !== undefined){
-						localStorage.unitResults = JSON.stringify(this.units.data.filter(f => f.market_rent >= budgetMin && f.market_rent <= budgetMax))
 						if(localStorage.href !== 'http://localhost:8001/roomeo/room-search')
 						window.location.replace("/roomeo/room-search")
 					}
 
 					if(dateFrom !== undefined){
 						let checkin = new Date(dateFrom)
-						//console.log('####',this.units.data.filter(f =>  moment(checkin).diff(f.available_from, 'days')))
-						localStorage.unitResults = JSON.stringify(this.units.data.filter(f =>  moment(checkin).diff(f.available_from, 'days') <= 0))
 						if(localStorage.href !== 'http://localhost:8001/roomeo/room-search')
 						window.location.replace("/roomeo/room-search")
 					}
-					
-					localStorage.removeItem('location')
-					localStorage.removeItem('rangeMin')
-					localStorage.removeItem('rangeMax')
-					localStorage.removeItem('dateFrom')
-					localStorage.removeItem('href')
 
 				})
 				.catch(error => console.log('error', error));
@@ -205,7 +192,7 @@
 				.then(response => response.text())
 				.then(result => { 
 					data = JSON.parse(result)
-					console.log('@@@',data)
+					//console.log('@@@',data)
 					localStorage.access_token = data.access_token;
 					localStorage.refresh_token = data.refresh_token
 					}

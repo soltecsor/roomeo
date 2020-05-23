@@ -89,7 +89,9 @@
 								</div>
 							</div>
 							</div>
-							</div>
+							</div></div></div></div>
+							<div class="col-lg-12 col-md-12 col-sm-12">
+						    <div class="tab-content grid-property property" id="property">
 							<div id="layout-list" class="tab-pane active limita-propriedades">
 								<div class="row" id="property-section">
 									<div class="col-lg-7 col-md-7 col-sm-12">
@@ -150,16 +152,6 @@
 											</div>
 										</div>
 									</div>
-
-									<!-- <div class="col-lg-5 col-md-5 col-sm-12">
-										<div class="property-location clearfix">
-											<div id="google-map" class="google-map map-area-full">
-												 <div id="googleMaps">
-													<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d317718.69325723714!2d-0.3817803745880977!3d51.52830797569601!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2sLondon%2C%20UK!5e0!3m2!1sen!2sbr!4v1590186434090!5m2!1sen!2sbr" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-												</div> -
-											</div>
-										</div>
-									</div> -->
 								</div>
 							</div>
 						</div>
@@ -171,6 +163,7 @@
 					</div>
 				</div>
 			</div>
+			</div></div>
 		</section>
 
 		<script type="application/javascript">
@@ -216,7 +209,6 @@
 				fetch(this.url+'units', requestOptions)
 				.then(response => response.text())
 				.then(result => {
-					console.log('@@@@', JSON.parse(result))
 					let area = localStorage.location 
 					let budgetMin = localStorage.rangeMin
 					let budgetMax = localStorage.rangeMax
@@ -224,35 +216,22 @@
 					let dateFrom = localStorage.dateFrom
 					this.units = JSON.parse(result)
 					this.units = this.units.data
-					localStorage.unitResults  = JSON.stringify(this.units.data)
-					//let comboArea = this.units.data.map(f => f.area)
-					//localStorage.setItem('filterArea', JSON.stringify(comboArea.filter((item,index) => comboArea.indexOf(item) == index)))
 					if(area !== undefined){
 						area = area.replace(/^./,area[0].toUpperCase());
-						localStorage.unitResults = JSON.stringify(this.units.data.filter(f => f.area == area))
-						//document.getElementById('property-destaques').scrollIntoView();
-						window.location.replace("/roomeo/room-search")
-					}else if(area = "all london"  && localStorage.href !== 'http://localhost:8001/roomeo/room-search'){
-						//window.location.replace("/roomeo/room-search")
+						this.units = this.units.filter(f => f.area == area)
 					}
 
 					if(budgetMax !== undefined  && budgetMin === undefined){
 						budgetMin = 0
-						localStorage.unitResults = JSON.stringify(this.units.data.filter(f => f.market_rent >= budgetMin && f.market_rent <= budgetMax))
-						if(localStorage.href !== 'http://localhost:8001/roomeo/room-search')
-						window.location.replace("/roomeo/room-search")
+						this.units = this.units.filter(f => f.market_rent >= budgetMin && f.market_rent <= budgetMax)
+						
 					}else if(budgetMax !== undefined  && budgetMin !== undefined){
-						localStorage.unitResults = JSON.stringify(this.units.data.filter(f => f.market_rent >= budgetMin && f.market_rent <= budgetMax))
-						if(localStorage.href !== 'http://localhost:8001/roomeo/room-search')
-						window.location.replace("/roomeo/room-search")
+						this.units = this.units.filter(f => f.market_rent >= budgetMin && f.market_rent <= budgetMax)
 					}
 
 					if(dateFrom !== undefined){
 						let checkin = new Date(dateFrom)
-						//console.log('####',this.units.data.filter(f =>  moment(checkin).diff(f.available_from, 'days')))
-						localStorage.unitResults = JSON.stringify(this.units.data.filter(f =>  moment(checkin).diff(f.available_from, 'days') <= 0))
-						if(localStorage.href !== 'http://localhost:8001/roomeo/room-search')
-						window.location.replace("/roomeo/room-search")
+						this.units = this.units.filter(f =>  moment(checkin).diff(f.available_from, 'days') <= 0)
 					}
 					
 					localStorage.removeItem('location')

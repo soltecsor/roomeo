@@ -210,12 +210,25 @@ setTimeout(()=>{
   });
 
   $(function() {
-    $("#scroll").on('click', function() {
-      $("html,body").animate({
-        scrollTop: $("#thetop").offset().top
-      }, "slow");
-      return false
-    })
+  $('#btlayoutlist').on('click',function(){
+
+      $('#layout-list').addClass('show')
+      $('#layout-grid').removeClass(' active show')
+      
+  })
+  $('#btlayoutgrid').on('click',function(){
+
+    $('#layout-grid').addClass('show')
+    $('#layout-list').removeClass(' active show')
+    
+})
+    //$('#layout-list').addClass('fade active show');
+    // $("#scroll").on('click', function() {
+    //   $("html,body").animate({
+    //     scrollTop: $("#thetop").offset().top
+    //   }, "slow");
+    //   return false
+    // })
   });
   // back to top - end
   // --------------------------------------------------
@@ -266,7 +279,7 @@ setTimeout(()=>{
     })
     $('#btlayoutlist').click(function(e){
       e.preventDefault()
-      //$('#layout-list').addClass('hidden');
+      $('#layout-list').addClass('fade active show');
     })
   
   // testimonial-carousel - start

@@ -141,74 +141,74 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td class="name">Tenant profiling <span class="help" data-placement="right" data-toggle="tooltip" data-html="true" title="a survey of the your ideal tenant profile"><i class="fa fa-question"></i></span></td>
-										<td><i class="fa fa-check"></i></td>
-										<td><i class="fa fa-check"></i></td>
+										<td class="name">Tenant profiling <span class="help" data-placement="right" data-toggle="tooltip" data-html="true" title="a survey of the your ideal tenant profile"><i class="fa fa-info" style="background: #fff;color:#05b59d; border:1px solid #05b59d;font-size:14px;"></i></span></td>
+										<td><i class="fa fa-check" style="background: #f8fbff;color:green;font-size:14px;"></i></td>
+										<td><i class="fa fa-check" style="background: #f8fbff;color:green;font-size:14px;"></i></td>
 									</tr>
 									<tr>
-										<td class="name">Professionalquality photography & videos <span class="help" data-placement="right" data-toggle="tooltip" data-html="true" title="production of quality photos and videos attracting high visibility and interest"><i class="fa fa-question"></i></span></td>
-										<td><i class="fa fa-check"></i></td>
-										<td><i class="fa fa-check"></i></td>
+										<td class="name">Professionalquality photography & videos <span class="help" data-placement="right" data-toggle="tooltip" data-html="true" title="production of quality photos and videos attracting high visibility and interest"><i class="fa fa-info" style="background: #fff;color:#05b59d; border:1px solid #05b59d;font-size:14px;"></i></span></td>
+										<td><i class="fa fa-check" style="background: #f8fbff;color:green;font-size:14px;"></i></td>
+										<td><i class="fa fa-check" style="background: #f8fbff;color:green;font-size:14px;"></i></td>
 									</tr>
 									<tr>
-										<td class="name">Floorplan <span class="help" data-placement="right" data-toggle="tooltip" data-html="true" title="illustrative floorplan drawn up"><i class="fa fa-question"></i></span></td>
-										<td><i class="fa fa-check"></i></td>
-										<td><i class="fa fa-check"></i></td>
+										<td class="name">Floorplan <span class="help" data-placement="right" data-toggle="tooltip" data-html="true" title="illustrative floorplan drawn up"><i class="fa fa-info" style="background: #fff;color:#05b59d; border:1px solid #05b59d;font-size:14px;"></i></span></td>
+										<td><i class="fa fa-check" style="background: #f8fbff;color:green;font-size:14px;"></i></td>
+										<td><i class="fa fa-check" style="background: #f8fbff;color:green;font-size:14px;"></i></td>
 									</tr>
 									<tr>
-										<td class="name">Room advertising <span class="help" data-placement="right" data-toggle="tooltip" data-html="true" title="well-crafted adverts published in main channels allowing for high visibility. Your room may be featured on spareroom, idealflatmate, badoo, rightmove and others, as well as on our website and social media"><i class="fa fa-question"></i></span></td>
-										<td><i class="fa fa-check"></i></td>
-										<td><i class="fa fa-check"></i></td>
+										<td class="name">Room advertising <span class="help" data-placement="right" data-toggle="tooltip" data-html="true" title="well-crafted adverts published in main channels allowing for high visibility. Your room may be featured on spareroom, idealflatmate, badoo, rightmove and others, as well as on our website and social media"><i class="fa fa-info" style="background: #fff;color:#05b59d; border:1px solid #05b59d;font-size:14px;"></i></span></td>
+										<td><i class="fa fa-check" style="background: #f8fbff;color:green;font-size:14px;"></i></td>
+										<td><i class="fa fa-check" style="background: #f8fbff;color:green;font-size:14px;"></i></td>
 									</tr>
 									<tr>
-										<td class="name">Tenant pre-screening <span class="help" data-placement="right" data-toggle="tooltip" data-html="true" title="enquiries vetting according to your specification, so that only qualifying ones are forwarded"><i class="fa fa-question"></i></span></td>
-										<td><i class="fa fa-check"></i></td>
-										<td><i class="fa fa-check"></i></td>
+										<td class="name">Tenant pre-screening <span class="help" data-placement="right" data-toggle="tooltip" data-html="true" title="enquiries vetting according to your specification, so that only qualifying ones are forwarded"><i class="fa fa-info" style="background: #fff;color:#05b59d; border:1px solid #05b59d;font-size:14px;"></i></span></td>
+										<td><i class="fa fa-check" style="background: #f8fbff;color:green;font-size:14px;"></i></td>
+										<td><i class="fa fa-check" style="background: #f8fbff;color:green;font-size:14px;"></i></td>
 									</tr>
 									<tr>
-										<td class="name">Enquiries management with SMS and email notification <span class="help" data-placement="right" data-toggle="tooltip" data-html="true" title="get notified of qualifying enquiries via SMS and email"><i class="fa fa-question"></i></span></td>
-										<td><i class="fa fa-check"></i></td>
-										<td><i class="fa fa-check"></i></td>
+										<td class="name">Enquiries management with SMS and email notification <span class="help" data-placement="right" data-toggle="tooltip" data-html="true" title="get notified of qualifying enquiries via SMS and email"><i class="fa fa-info" style="background: #fff;color:#05b59d; border:1px solid #05b59d;font-size:14px;"></i></span></td>
+										<td><i class="fa fa-check" style="background: #f8fbff;color:green;font-size:14px;"></i></td>
+										<td><i class="fa fa-check" style="background: #f8fbff;color:green;font-size:14px;"></i></td>
 									</tr>
 									<tr>
-										<td class="name">Viewings bookings <span class="help" data-placement="right" data-toggle="tooltip" data-html="true" title="we can organise viewings according to your availability"><i class="fa fa-question"></i></span></td>
-										<td><i class="fa fa-check"></i></td>
-										<td><i class="fa fa-check"></i></td>
+										<td class="name">Viewings bookings <span class="help" data-placement="right" data-toggle="tooltip" data-html="true" title="we can organise viewings according to your availability"><i class="fa fa-info" style="background: #fff;color:#05b59d; border:1px solid #05b59d;font-size:14px;"></i></span></td>
+										<td><i class="fa fa-check" style="background: #f8fbff;color:green;font-size:14px;"></i></td>
+										<td><i class="fa fa-check" style="background: #f8fbff;color:green;font-size:14px;"></i></td>
 									</tr>
 									<tr>
-										<td class="name">Tenancy Compliance Service <span class="help" data-placement="right" data-toggle="tooltip" data-html="true" title="information on relevant documentation necessary for a legally compliant tenancy creation"><i class="fa fa-question"></i></span></td>
-										<td><i class="fa fa-check"></i></td>
-										<td><i class="fa fa-check"></i></td>
+										<td class="name">Tenancy Compliance Service <span class="help" data-placement="right" data-toggle="tooltip" data-html="true" title="information on relevant documentation necessary for a legally compliant tenancy creation"><i class="fa fa-info" style="background: #fff;color:#05b59d; border:1px solid #05b59d;font-size:14px;"></i></span></td>
+										<td><i class="fa fa-check" style="background: #f8fbff;color:green;font-size:14px;"></i></td>
+										<td><i class="fa fa-check" style="background: #f8fbff;color:green;font-size:14px;"></i></td>
 									</tr>
 									<tr>
-										<td class="name">Property viewings <span class="help" data-placement="right" data-toggle="tooltip" data-html="true" title="accompanied viewings where your property will be thoroughly presented to prospective tenants"><i class="fa fa-question"></i></span></td>
-										<td><i class="fa fa-minus"></i></td>
-										<td><i class="fa fa-check"></i></td>
+										<td class="name">Property viewings <span class="help" data-placement="right" data-toggle="tooltip" data-html="true" title="accompanied viewings where your property will be thoroughly presented to prospective tenants"><i class="fa fa-info" style="background: #fff;color:#05b59d; border:1px solid #05b59d;font-size:14px;"></i></span></td>
+										<td><i class="fa fa-minus" style="color:lightgrey"></i></td>
+										<td><i class="fa fa-check" style="background: #f8fbff;color:green;font-size:14px;"></i></td>
 									</tr> 
 									<tr>
-										<td class="name">Hold deposit collection <span class="help" data-placement="right" data-toggle="tooltip" data-html="true" title="we collect a hold deposit from the applicant, according to current legislation, to reserve the room"><i class="fa fa-question"></i></span></td>
-										<td><i class="fa fa-minus"></i></td>
-										<td><i class="fa fa-check"></i></td>
+										<td class="name">Hold deposit collection <span class="help" data-placement="right" data-toggle="tooltip" data-html="true" title="we collect a hold deposit from the applicant, according to current legislation, to reserve the room"><i class="fa fa-info" style="background: #fff;color:#05b59d; border:1px solid #05b59d;font-size:14px;"></i></span></td>
+										<td><i class="fa fa-minus" style="color:lightgrey"></i></td>
+										<td><i class="fa fa-check" style="background: #f8fbff;color:green;font-size:14px;"></i></td>
 									</tr>
 									<tr>
-										<td class="name">Tenancy sign-up <span class="help" data-placement="right" data-toggle="tooltip" data-html="true" title="upon provision by the client, we will send relevant documents to the tenant in order for tenancy to be compliant with current regulations and legalisation"><i class="fa fa-question"></i></span></td>
-										<td><i class="fa fa-minus"></i></td>
-										<td><i class="fa fa-check"></i></td>
+										<td class="name">Tenancy sign-up <span class="help" data-placement="right" data-toggle="tooltip" data-html="true" title="upon provision by the client, we will send relevant documents to the tenant in order for tenancy to be compliant with current regulations and legalisation"><i class="fa fa-info" style="background: #fff;color:#05b59d; border:1px solid #05b59d;font-size:14px;"></i></span></td>
+										<td><i class="fa fa-minus" style="color:lightgrey"></i></td>
+										<td><i class="fa fa-check" style="background: #f8fbff;color:green;font-size:14px;"></i></td>
 									</tr>
 									<tr>
-										<td class="name">Deposit collection and protection <span class="help" data-placement="right" data-toggle="tooltip" data-html="true" title="deposit collected and registered with a government-approved scheme on client’s behalf"><i class="fa fa-question"></i></span></td>
-										<td><i class="fa fa-minus"></i></td>
-										<td><i class="fa fa-check"></i></td>
+										<td class="name">Deposit collection and protection <span class="help" data-placement="right" data-toggle="tooltip" data-html="true" title="deposit collected and registered with a government-approved scheme on client’s behalf"><i class="fa fa-info" style="background: #fff;color:#05b59d; border:1px solid #05b59d;font-size:14px;"></i></span></td>
+										<td><i class="fa fa-minus" style="color:lightgrey"></i></td>
+										<td><i class="fa fa-check" style="background: #f8fbff;color:green;font-size:14px;"></i></td>
 									</tr>
 									<tr>
-										<td class="name">Online signing of Arla-approved AST contract <span class="help" data-placement="right" data-toggle="tooltip" data-html="true" title="we can organise for the tenancy agreement to be signed online by both parties"><i class="fa fa-question"></i></span></td>
-										<td><i class="fa fa-minus"></i></td>
-										<td><i class="fa fa-check"></i></td>
+										<td class="name">Online signing of Arla-approved AST contract <span class="help" data-placement="right" data-toggle="tooltip" data-html="true" title="we can organise for the tenancy agreement to be signed online by both parties"><i class="fa fa-info" style="background: #fff;color:#05b59d; border:1px solid #05b59d;font-size:14px;"></i></span></td>
+										<td><i class="fa fa-minus" style="color:lightgrey"></i></td>
+										<td><i class="fa fa-check" style="background: #f8fbff;color:green;font-size:14px;"></i></td>
 									</tr>
 									<tr>
-										<td class="name">First month’s rent collection <span class="help" data-placement="right" data-toggle="tooltip" data-html="true" title="collection of first month’s rent, paid into our account, and passed on to client"><i class="fa fa-question"></i></span></td>
-										<td><i class="fa fa-minus"></i></td>
-										<td><i class="fa fa-check"></i></td>
+										<td class="name">First month’s rent collection <span class="help" data-placement="right" data-toggle="tooltip" data-html="true" title="collection of first month’s rent, paid into our account, and passed on to client"><i class="fa fa-info" style="background: #fff;color:#05b59d; border:1px solid #05b59d;font-size:14px;"></i></span></td>
+										<td><i class="fa fa-minus" style="color:lightgrey"></i></td>
+										<td><i class="fa fa-check" style="background: #f8fbff;color:green;font-size:14px;"></i></td>
 									</tr>
 									<tfoot>
 									<tr>
@@ -260,38 +260,11 @@
 			</div>
 		</section>
 
-
-		<!-- este bloco deve permitir mostrar e esconder de acordo com o painel administrativo. Por ora fica oculto, mas deve permitir ser exibido a qulquer momento 
-		<section id="calltoaction-section" class="calltoaction-section clearfix hidden" style="background-image: url(assets/images/bckgroun/bg_dark.jpg);">
-			<div class="default-calltoaction">
-				<div class="container">
-					<div class="row justify-content-lg-between justify-content-md-center">
-
-						<div class="col-lg-9 col-md-12 col-sm-12">
-							<div class="section-title">
-								<span class="small-title">Tired of managing your properties?</span>
-								<h2 class="big-title mb-0">Learn about our Guaranteed Rent model here.</h2>
-							</div>
-						</div>
-
-						<div class="col-lg-3 col-md-12 col-sm-12">
-							<div class="quote-btn-area text-right clearfix">
-								<a href="#!" class="custom-btn inverte"><i class="fa fa-plus"></i> learn more</a>
-							</div>
-						</div>
-
-					</div>
-				</div>
-			</div>
-		</section>-->
-
-
 		<!-- services -->
 		<section id="steps-section" class="service-section sec-ptb-120 pt-0 clearfix">
 			<div class="container">
 
 				<div class="section-title text-center mb-70">
-					<!-- <span class="small-title">Steps</span> -->
 					<h2 class="big-title mb-0">Steps</h2>
 				</div>
 
