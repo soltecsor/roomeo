@@ -192,7 +192,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
     <script src="{{asset('public/js').'/emailValidate.js'}}"></script>
     <!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbcOeIuguaMMf5zZkGmPORRsOkB--wok8&callback=initMap" type="text/javascript"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=  &callback=initMap" type="text/javascript"></script>
                              -->
     <!-- <script src="{{asset('public/js/app.js')}}"></script> -->                          
     @include('portal.inc.svg')
