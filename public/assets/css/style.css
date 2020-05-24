@@ -40,7 +40,9 @@ File: scss
     position: absolute;
     top: calc(50% - 3.5px);
     left: calc(50% - 3.5px); }
-   
+    #map {
+      height: 100%;
+    }
 /*
 Template Name: Material Pro Admin
 Author: Themedesigner

@@ -222,14 +222,8 @@ setTimeout(()=>{
     $('#layout-list').removeClass(' active show')
     
 })
-    //$('#layout-list').addClass('fade active show');
-    // $("#scroll").on('click', function() {
-    //   $("html,body").animate({
-    //     scrollTop: $("#thetop").offset().top
-    //   }, "slow");
-    //   return false
-    // })
-  });
+
+});
   // back to top - end
   // --------------------------------------------------
 

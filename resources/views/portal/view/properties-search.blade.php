@@ -157,8 +157,8 @@
 						</div>
 					</div>
 					<div class="col-lg-5 col-md-5 col-sm-12">
-						<div id="googleMaps">
-							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d317718.69325723714!2d-0.3817803745880977!3d51.52830797569601!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2sLondon%2C%20UK!5e0!3m2!1sen!2sbr!4v1590186434090!5m2!1sen!2sbr" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+						<div>
+							<iframe :src="properties" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 						</div>									
 					</div>
 				</div>
@@ -183,12 +183,15 @@
 				client_id:'c163687de105827e9c35765fadd4b5fc6c356ae6c60f4d1fd608bf10d7c0307e',
 				client_secret:'db031ae061087a44424da28ed015c714c3c8824147984f6896730c3a5ac77b32',
 				entity:'82013',
-				locationFilter:localStorage.location
+				locationFilter:localStorage.location,
+				markers:null,
+				properties:null
 			}
         },
 		created(){
 			
 			this.getUnits()
+			this.getProperty()
 
 		},
         mounted () {	
@@ -266,7 +269,7 @@
 				.then(response => response.text())
 				.then(result => { 
 					data = JSON.parse(result)
-					console.log('@@@',data)
+					//console.log('@@@',data)
 					localStorage.access_token = data.access_token;
 					localStorage.refresh_token = data.refresh_token
 					}
@@ -284,6 +287,32 @@
 
 			roomDetail(unitId){
 				localStorage.unitId = unitId
+			},
+			getProperty(){
+				let header = {
+                'Authorization':'Bearer '+localStorage.access_token,
+                'X-EntityID': this.entity
+				}
+				let requestOptions = {
+					method: 'GET',
+					headers: header,
+					redirect: 'follow'
+				};
+				fetch(this.url+'properties?Property_Type=Mixed', requestOptions)
+				.then(response => response.text())
+				.then(result => {
+					let properties = JSON.parse(result)
+					
+					properties = properties.data
+					
+					let arrayProperties = []
+					for(let i=0;i<properties.length;i++){
+						arrayProperties[i] = {ref:properties[i].ref,ltd:properties[i].latitude,lng:properties[i].longitude}
+					}
+					this.properties = 'http://roomeo.co.uk/newroomeo/map.php?markers='+JSON.stringify(arrayProperties)
+					
+				})
+				.catch(error => console.log('error', error));
 			}
 		},destroyed(){
 			localStorage.removeItem('location')

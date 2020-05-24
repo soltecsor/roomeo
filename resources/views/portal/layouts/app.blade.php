@@ -19,17 +19,8 @@
         <script src="public/portal/assets/js/jquery-3.4.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.0/moment.min.js"></script>
         <script src="{{asset('public/js/vue.js')}}"></script>
-        <!-- <script src="{{asset('public/js/axios.js')}}"></script> -->
-        <!-- API Maps Google -->
-        <!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script> -->
-        <!-- <script
-        src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&libraries=&v=weekly"
-        defer
-        ></script> -->
 
-        <script src="https://cdn.apple-mapkit.com/mk/5.0.x/mapkit.js"></script>
-
-	</head>
+        </head>
 
 
 	<body class="home-page-3" >
@@ -200,9 +191,10 @@
     <script src="public/portal/assets/js/scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
     <script src="{{asset('public/js').'/emailValidate.js'}}"></script>
-
-    <!-- <script src="{{asset('public/js/app.js')}}"></script> -->
-
+    <!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbcOeIuguaMMf5zZkGmPORRsOkB--wok8&callback=initMap" type="text/javascript"></script>
+                             -->
+    <!-- <script src="{{asset('public/js/app.js')}}"></script> -->                          
     @include('portal.inc.svg')
     
     </body>
