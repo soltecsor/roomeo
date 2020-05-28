@@ -191,11 +191,15 @@
 		created(){
 			
 			this.getUnits()
-			this.getProperty()
 
 		},
         mounted () {	
 		   this.refreshToken()
+		   setTimeout(() => {
+			this.getProperty()
+
+		   }, 1000);
+
 
         },
 		methods: {
@@ -237,7 +241,7 @@
 						this.units = this.units.filter(f =>  moment(checkin).diff(f.available_from, 'days') <= 0)
 					}
 					
-					localStorage.removeItem('location')
+					//localStorage.removeItem('location')
 					localStorage.removeItem('rangeMin')
 					localStorage.removeItem('rangeMax')
 					localStorage.removeItem('dateFrom')
@@ -269,7 +273,6 @@
 				.then(response => response.text())
 				.then(result => { 
 					data = JSON.parse(result)
-					//console.log('@@@',data)
 					localStorage.access_token = data.access_token;
 					localStorage.refresh_token = data.refresh_token
 					}
@@ -301,19 +304,38 @@
 				fetch(this.url+'properties?Property_Type=Mixed', requestOptions)
 				.then(response => response.text())
 				.then(result => {
+					if(localStorage.location == undefined){
 					let properties = JSON.parse(result)
-					
-					properties = properties.data
-					
 					let arrayProperties = []
+					let markers = []
+					properties = properties.data
+					let unitsFiltered = []
 					for(let i=0;i<properties.length;i++){
-						arrayProperties[i] = {ref:properties[i].ref,ltd:properties[i].latitude,lng:properties[i].longitude}
+							markers[i] = {ref:properties[i].ref,ltd:properties[i].latitude,lng:properties[i].longitude}
 					}
-					this.properties = 'http://roomeo.co.uk/newroomeo/map.php?markers='+JSON.stringify(arrayProperties)
-					
+				    this.properties = 'http://roomeo.co.uk/newroomeo/map.php?markers='+JSON.stringify(markers)
+					}else{
+						let properties = JSON.parse(result)
+						let markers = []
+						let id = []
+						let pin = []
+						for(let i=0;i<properties.length;i++){
+							    this.units.filter(f = f.property_id == properties[i].id)
+						}
+						for(let i=0;i<this.units.length;i++){
+							    id[i] = this.units[i].property_id 
+						}
+						for(let i=0;i<id.length;i++){
+							markers[i] = properties.data.filter(f => f.id == id[i])
+							pin[i] = {ref:markers[i][0].ref,ltd:markers[i][0].latitude,lng:markers[i][0].longitude}
+						
+						}
+						localStorage.removeItem('location')
+						this.properties = 'http://roomeo.co.uk/newroomeo/map.php?markers='+JSON.stringify(pin)
+					}
 				})
 				.catch(error => console.log('error', error));
-			}
+			}	
 		},destroyed(){
 			localStorage.removeItem('location')
 			localStorage.removeItem('unitResults')
