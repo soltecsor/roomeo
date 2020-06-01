@@ -242,9 +242,9 @@
 					}
 					
 					//localStorage.removeItem('location')
-					localStorage.removeItem('rangeMin')
-					localStorage.removeItem('rangeMax')
-					localStorage.removeItem('dateFrom')
+					//localStorage.removeItem('rangeMin')
+					//localStorage.removeItem('rangeMax')
+					//localStorage.removeItem('dateFrom')
 					localStorage.removeItem('href')
 
 				})
@@ -331,6 +331,45 @@
 						
 						}
 						localStorage.removeItem('location')
+						this.properties = 'http://roomeo.co.uk/newroomeo/map.php?markers='+JSON.stringify(pin)
+					}
+					if(localStorage.rangeMin != undefined && localStorage.rangeMin != undefined ){
+						let properties = JSON.parse(result)
+						let markers = []
+						let id = []
+						let pin = []
+						for(let i=0;i<properties.length;i++){
+							this.units = this.units.filter(f => f.market_rent >= budgetMin && f.market_rent <= budgetMax)
+						}
+						for(let i=0;i<this.units.length;i++){
+							    id[i] = this.units[i].property_id 
+						}
+						for(let i=0;i<id.length;i++){
+							markers[i] = properties.data.filter(f => f.id == id[i])
+							pin[i] = {ref:markers[i][0].ref,ltd:markers[i][0].latitude,lng:markers[i][0].longitude}
+						
+						}
+						localStorage.removeItem('rangeMin')
+						localStorage.removeItem('rangeMax')
+						this.properties = 'http://roomeo.co.uk/newroomeo/map.php?markers='+JSON.stringify(pin)
+					}
+					if(localStorage.dateFrom != undefined ){
+						let properties = JSON.parse(result)
+						let markers = []
+						let id = []
+						let pin = []
+						for(let i=0;i<properties.length;i++){
+							this.units = this.units.filter(f =>  moment(checkin).diff(f.available_from, 'days') <= 0)
+						}
+						for(let i=0;i<this.units.length;i++){
+							    id[i] = this.units[i].property_id 
+						}
+						for(let i=0;i<id.length;i++){
+							markers[i] = properties.data.filter(f => f.id == id[i])
+							pin[i] = {ref:markers[i][0].ref,ltd:markers[i][0].latitude,lng:markers[i][0].longitude}
+						
+						}
+						localStorage.removeItem('dateFrom')
 						this.properties = 'http://roomeo.co.uk/newroomeo/map.php?markers='+JSON.stringify(pin)
 					}
 				})
