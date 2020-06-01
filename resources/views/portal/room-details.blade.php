@@ -160,7 +160,7 @@
 											<label for="bv-input-phone" class="form-item-btn active"><i class="far fa-phone"></i></label>
 										</div>
 										<div class="form-item rangedate">
-											<input type="date" class="form-control datetimepicker hasDatepicker"  data-date-format="yyyy-mm-dd" id="visite" placeholder="Date" name="visite" v-model="date">
+											<input type="date" class="form-control"  data-date-format="yyyy-mm-dd" placeholder="Date">
 											<label for="visite" class="form-item-btn active"><i class="far fa-calendar"></i></label>
 										</div>
 										<div class="form-textarea">
@@ -293,6 +293,7 @@
 				client_id:'c163687de105827e9c35765fadd4b5fc6c356ae6c60f4d1fd608bf10d7c0307e',
 				client_secret:'db031ae061087a44424da28ed015c714c3c8824147984f6896730c3a5ac77b32',
 				entity:'82013',
+				applicant:null
             }
         },
         mounted () {	
@@ -354,6 +355,39 @@
 				})
 				.catch(error => console.log('error', error));
 			},
+			addViewing(){
+				let header = {
+                'Authorization':'Bearer '+localStorage.access_token,
+                'X-EntityID': this.entity,
+				"Content-Type": "application/json"
+				}
+				let raw = JSON.stringify({
+						"unit_id": this.units.id,
+						"applicant_id": this.applicant,
+						"viewing_date": this.date
+						//"viewing_time": "",
+						// "offer_amount": "",
+						// "offer_frequency": "",
+						// "move_in_date": "",
+						// "assigned_to_ids": [
+						// 	this.entity
+						// ],
+						// "source": "",
+						// "notes":
+					})
+				let requestOptions = {
+					method: 'POST',
+					headers: header,
+					body:raw,
+					redirect: 'follow'
+				};
+				fetch(this.url+'viewings', requestOptions)
+				.then(response => response.text())
+				.then(result => {
+					let response = JSON.parse(result)
+				})
+				.catch(error => console.log('error', error));
+			},	
 			addApplicant(){
 				this.statusBooking = null
 				if(!this.firstName || !this.lastName || !this.date || !this.email || !this.phone){
@@ -386,7 +420,9 @@
 				.then(response => response.text())
 				.then(result => {
 					let response = JSON.parse(result)
+					this.applicant = response.data.id
 					if(response.status === 200){
+						this.addViewing()
 						this.statusBooking = true
 						this.messageBooking = "Booking Successful"
 						this.firstName = '' 
@@ -403,7 +439,8 @@
 				.catch(error => console.log('error', error));
 				}
 
-			}	
+			}
+
 		}
     })
 </script>

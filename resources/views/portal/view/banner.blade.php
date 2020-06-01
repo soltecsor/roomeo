@@ -67,6 +67,8 @@
 														</label> -->
 													</span>
 												</div>
+												<button class="form-control"  id="btAnytime" style="width:50%;position:relative;margin:auto;background:#05b59d;color: #352026">Anytime</button>
+
 											</div>
 										</li>
 										<li>
@@ -153,6 +155,11 @@
 			}else{
 				$('.show').css('visibility','')
 			}
+		})
+
+		$('#btAnytime').on('click',function(e){
+			e.preventDefault();
+			window.location.href="<?php url('/room-search') ?>"
 		})	
 	})
 

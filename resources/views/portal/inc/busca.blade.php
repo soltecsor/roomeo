@@ -47,7 +47,7 @@
 								</label>														
 							</span>
 						</div>
-						<button class="form-control" style="width:50%;position:relative;margin:auto">Anytime</button>
+						<button class="form-control" style="width:50%;position:relative;margin:auto;background:#05b59d;color: #352026">Anytime</button>
 					</div>
 				</li>
 				<li>
@@ -88,7 +88,6 @@
 		window.location.reload(false);
 	}
 	$(function(){
-		
 		$('.form-item').css('height','50px')
 		$('.nice-select').css('border','none')
 		$('.nice-select').css('line-height','50px')

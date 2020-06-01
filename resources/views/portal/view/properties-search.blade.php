@@ -59,7 +59,6 @@
 												<div class="action-btns-group ul-li-right clearfix mt-30">
 													<ul class="clearfix">
 														<li><a href="uploads/slider/slide01.jpg" data-toggle="lightbox" data-gallery="property"><i class="far fa-search"></i></a></li>
-														<li><a href="wishlist.php"><i class="far fa-heart"></i></a></li>
 													</ul>
 												</div>
 											</div>
@@ -115,18 +114,16 @@
 															<div class="owl-stage" style="transform: translate3d(-739px, 0px, 0px); transition: all 0.25s ease 0s; width: 2590px;">
 															<div :class="i === 0 ? 'owl-item active' : 'owl-item'" style="width: 370px;" v-for="(image,i) of unit.image_urls" :key="i">
 																<div class="item">
-																	<a :href="image.replace('download','view')" data-toggle="lightbox" data-gallery="property">
-																		<img v-show="image != ''" :src="image.replace('download','view')" alt="roomeo home sharing" class="img-fluid">
-																	</a>
+																	<img v-show="image != ''" :src="image.replace('download','view')" alt="roomeo home sharing" class="img-fluid">
+																	<div class="action-btns-group ul-li-right clearfix">
+																		<ul class="clearfix">
+																			<li><a :href="image.replace('download','view')" data-toggle="lightbox" data-gallery="property"><i class="far fa-search"></i></a></li>
+																		</ul>
+																	</div>
 																</div>
 															</div>
 														</div>
-														<div class="action-btns-group ul-li-right clearfix">
-															<ul class="clearfix">
-																<li><a href="uploads/slider/slide01.jpg" data-toggle="lightbox" data-gallery="property"><i class="far fa-search"></i></a></li>
-																<li><a href="wishlist.php"><i class="far fa-heart"></i></a></li>
-															</ul>
-														</div>
+								
 													</div>
 
 													<div class="property-content" onclick="window.location.href='room-details.php';">
@@ -206,8 +203,9 @@
 			getUnits(){
 				let header = {
                 'Authorization':'Bearer '+localStorage.access_token,
-                'X-EntityID': this.entity
+                'X-EntityID': this.entity,
 				}
+				console.log('@@@@',header)
 				let requestOptions = {
 					method: 'GET',
 					headers: header,
